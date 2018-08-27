@@ -19,7 +19,7 @@
 ### 안드로이드 버전
 
 코드네임 | API 레벨 | 안드로이드 버전
--|-|-
+---|---|---
 프로요 | 8 | 2.2
 진저브레드 | 9, 10 | 2.2, 2.3
 허니콤 | 11, 12, 13 | 3.0, 3.1, 3.2
@@ -35,15 +35,27 @@
 - 안드로이드 버전 지정은 AndroidManifest.xml에서 uses-sdk 항목 중 android:minSdkVersion, android:targetSdkVersion을 기재하면됨. 현재는 대부분 안드로이드 스튜디오를 사용하므로 build.gradle에서 두 항목을 오버라이드 해서 많이 사용
 - targetSdkVersion은 반드시 지정하는게 좋음. 지정하지 않으면 minSdkVersion과 동일한 값으로 지정됨. targetSdkVersion을 지정한다는 것은 해당 버전까지는 테스트해서 앱을 실행하는 데 문제가 없고, 그 버전까지는 호환성 모드를 쓰지 않음
 - 호환성 모드는 안드로이드 버전이 올라가더라도 앱의 기존 동작이 바뀌는 것을 방지하기 위한 것으로 호환성 모드로 동작되게 두는 것 보다는 targetSdkVersion을 높여 쓰는 것이 단말의 최신 기능을 쓸 수 있게 되기 때문에 권장됨
-
   - AsyncTask 병렬/순차 실행 : 허니콤 이전 버전에선 AsyncTask 태스크가 병렬 실행. 허니콘 부터는 순차 실행. targetSdkVersion이 10 이하이면 안드로이드 버전이 높다고 해도 병렬 실행하게됨
   - 메인 스레드 상에서 네트워크 통신 : API 9 까지 메인 스레드 상에서 네트워크 통신 허용. 그 이후는 NetworkOnMainThreadException 발생
   - 하드웨어 가속 : GPU를 가지고 View에서 Canvas에 그리는 작업. 허니콤에서 처음 시작되었고 targetSdkVersion이 14 이상이면 디폴트 옵션임
   - 앱 위젯 기본 패딩 : targetSDKVersion이 14 이상일 때는 앱 위젯에 기본 패딩이 존재. 기존에는 셀의 사이즈를 가득 채움
   - 명시적 인텐트로 서비스 시작 : targetSDKVersion이 21 이상일 때는 startService(), bindService() 메서드를 실행할 때 명시적 인테트를 사용해야 함. 암시적 인텐트를 사용하면 예외발생. 20 이하이면 문제 없이 동작
-
 - compileSdkVersion은 컴파일 시에 어느 버전의 android.jar를 사용할지 정하는 것. ```<sdk>/platforms/android-[버전]``` compileSdkVersion은 디폴트 값이 없으므로 반드시 지정해야 함.
 - targetSdkVersion은 런타임 시에 비교해서 호환성 모드로 동작하기 위한 값이고, compileSdkVersion은 컴파일 시에 사용할 버전을 정하는 것임. 규칙은 없으나 compileSdkVersion은 targetSdkVersion과 동일하거나 그 이상으로 정함
+- compileSdkVersion을 높은 버전으로 정하고 컴파일해서 만든 앱이, 낮은 버전의 단말에서 설치되어 동작될때 높은 버전에만 있는 클래스나 메서드가 호출될때 크래시가 발생되므로 버전을 체크하는 코드를 사용하게 됨
+- 메서드 마다 Build.VERSION_SDK_INT를 확인해 분기하는 코드 보다는 support 패키지의 -Compat 클래스를 사용하는게 좋음 ```ViewCompat, ActivityCompat, WindowCompat, NotifiationCompat, AsyncTaskCompat, SharedPreferencesCompat.EditorCompat...```
+
+```java
+if (Build.VERSION.SDK_INT >= 9) {
+  listview.setOverScrollMode(View.OVER_SCROLL_NEVER);
+}
+```
+> ViewCompat을 쓰면 간단해짐
+```java
+ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
+```
+
+- support-v4에 호환 메서드가 있으면 그것을 먼저 사용하고 없을때는 별도로 작성. 버전마다 동작이 달라지도록 코드를 작성할 때는 ViewCompat 클래스의 구조를 활용 ```if 문으로 버전을 체크하지 않고, 정적 초기화 블록에서 if 문으로 버전을 체크 후 사용할 클래스를 지정하는 방식```
 
 ## 2. 메인 스레드와 Handler
 
