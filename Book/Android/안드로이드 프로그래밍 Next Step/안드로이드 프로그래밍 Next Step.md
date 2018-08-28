@@ -139,6 +139,55 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
 
 ### 싱글톤 패턴
 
+- 싱글톤을 잘못 사용하면 메모리 누수 가능성이 있음. 꼭 필요한 곳에서만 사용하는게 좋음
+- 싱글톤에 Activity Context를 전달한 경우 싱글톤 생명주기동안 참조로 남아서 Activity를 종료했음에도 GC 대상이 되지 않아 메모리에 계속 남는 문제가 생길 수 있음
+- 누수 검증 테스트 (싱글톤 코드는 support-v4에 포함된 LocalBroadcastManager 구현 방식을 그대로 차용함) 
+```java
+public class CalendarManager {
+
+  private static final Object lock = new Object();
+  private static final CalendarManager instance;
+
+  public static CalendarManager getInstance(Context context) {
+    synchronized (lock) {
+      if (instance == null) {
+        instance = new CalendarManager(context); // (1)
+        instance = new CalendarManager(context.getApplicationContext()); // (2)
+      }
+      return instance;
+    }
+  }
+
+  private Context context;
+
+  private CalendarManager(Context context) {
+    this.context = context;
+  }
+
+  public String getText() {
+    return context.getString(R.string.hello_world);
+  }
+}
+```
+```java
+public class ScheduleActivity extends Activity {
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    final TextView textView = new TextView(this);
+    text.setText("first run");
+    setContentView(textView);
+    CalendarManager manager = CalendarManager.getInstance(this);
+  }
+}
+```
+> (1) 전달 받은 Activity의 Context를 넘겨줌 (2) 전달 받은 Activity에서 getApplicationContext()로 Application Context를 가져온 다음 넘겨줌
+
+> ScheduleActivity 실행 후 Back 키로 종료하면 어떤 코드가 Activity 메모리 Leak이 생길까? 
+
+- 싱클톤은 사용하는 쪽에서 규칙을 강제하면 안되고, 싱글톤 내에서 getApplicationContext()와 같이 얻은 결과를 사용하는 것이 나음
+
 ### 마커 인터페이스
 
 ### Fragment 정적 생성
