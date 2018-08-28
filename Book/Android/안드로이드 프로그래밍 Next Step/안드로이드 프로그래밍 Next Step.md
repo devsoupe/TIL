@@ -70,3 +70,75 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
 ### UI 변경 메커니즘
 
 ### ANR
+
+## 3. 백그라운드 스레드
+
+### HandlerThread 클래스
+
+### 스레드 풀 사용
+
+### AynsTask 클래스
+
+## 4. Context
+
+## 5. 액티비티
+
+### 생명주기
+
+### 구성 변경
+
+### 태스크
+
+### <activity-alias> 선언
+
+## 6. 서비스
+
+### 스타티드 서비스
+
+### 바운드 서비스
+
+## 7. 콘텐트 프로바이더
+
+### SQLite
+
+### 콘텐트 프로바이더
+
+### SQLite/ContentProvider 관련 팁
+
+## 8. 브로드캐스트 리시버
+
+### 브로드캐스트 리시버 구현
+
+### 브로드캐스트 리시버 등록
+
+### 오더드 브로드캐스트
+
+### 스티키 브로드캐스트
+
+### LocalBroadcastManager 클래스
+
+### 앱 위젯
+
+## 9. Application
+
+### 앱 초기화
+
+### Application 콜백
+
+### 프로세스 분리
+
+## 10. 시스템 서비스
+
+### 시스템 서비스 기본
+
+### dumpsys 명령어
+
+### 시스템 서비스 이슈
+
+## 11. 구현 패턴
+
+### 싱글톤 패턴
+
+### 마커 인터페이스
+
+### Fragment 정적 생성
