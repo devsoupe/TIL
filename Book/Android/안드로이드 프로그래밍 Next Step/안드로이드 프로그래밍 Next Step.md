@@ -50,7 +50,9 @@ if (Build.VERSION.SDK_INT >= 9) {
   listview.setOverScrollMode(View.OVER_SCROLL_NEVER);
 }
 ```
+
 > ViewCompat을 쓰면 간단해짐
+
 ```java
 ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
 ```
@@ -140,8 +142,9 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
 ### 싱글톤 패턴
 
 - 싱글톤을 잘못 사용하면 메모리 누수 가능성이 있음. 꼭 필요한 곳에서만 사용하는게 좋음
-- 싱글톤에 Activity Context를 전달한 경우 싱글톤 생명주기동안 참조로 남아서 Activity를 종료했음에도 GC 대상이 되지 않아 메모리에 계속 남는 문제가 생길 수 있음
-- 누수 검증 테스트 (싱글톤 코드는 support-v4에 포함된 LocalBroadcastManager 구현 방식을 그대로 차용함) 
+- 싱글톤에 액티비티 Context를 전달한 경우 싱글톤 생명주기동안 참조로 남아서 액티비티를 종료했음에도 GC 대상이 되지 않아 메모리에 계속 남는 문제가 생길 수 있음
+> 누수 검증 테스트 (싱글톤 코드는 support-v4에 포함된 LocalBroadcastManager 구현 방식을 그대로 차용함)
+
 ```java
 public class CalendarManager {
 
@@ -169,6 +172,7 @@ public class CalendarManager {
   }
 }
 ```
+
 ```java
 public class ScheduleActivity extends Activity {
 
@@ -182,12 +186,21 @@ public class ScheduleActivity extends Activity {
   }
 }
 ```
-> (1) 전달 받은 Activity의 Context를 넘겨줌 (2) 전달 받은 Activity에서 getApplicationContext()로 Application Context를 가져온 다음 넘겨줌
 
-> ScheduleActivity 실행 후 Back 키로 종료하면 어떤 코드가 Activity 메모리 Leak이 생길까? 
-
+- ScheduleActivity 실행 후 Back 키로 종료하면 어떤 코드가 액티비티 메모리 Leak이 생길까?
+  - (1) 전달 받은 액티비티의 Context를 넘겨줌 (액티비티를 종료해도 Context가 Singleton에서 참조되고 있어 GC 대상이 되지 않아 메모리 릭이 발생함)
+  - (2) 전달 받은 액티비티에서 getApplicationContext()로 Application Context를 가져온 다음 넘겨줌 (액티비티의 Context를 넘긴것이 아니므로 액티비티 종료시 메모리 릭이 발생하지 않음)
 - 싱클톤은 사용하는 쪽에서 규칙을 강제하면 안되고, 싱글톤 내에서 getApplicationContext()와 같이 얻은 결과를 사용하는 것이 나음
 
 ### 마커 인터페이스
 
+- 메서드 선언이 없는 인터페이스. 표식(marking) 용도로 인터페이스를 사용. 예) Serializable
+- 복잡한 조건문이 필요한 로직이나 파라미터가 많은 메서드에서 사용 가능함
+- 마커 인터페이스는 마커 어노테이션으로 대체 가능함
+
 ### Fragment 정적 생성
+
+- Fragment를 생성할때 값을 전달하는 경우가 많은데, Fragment에 세터(setter)로 값을 전달하는 방식보다는,정적 메서드로 Fragment를 생성하면서 값을 전달하는 패턴이 많이 사용됨
+- 정적 메서드는 Bundle에 전달받은 데이터를 넣고, 생성한 Fragment에 setArguments를 사용해 값을 넣은 다음 return 해주게 되는데 값을 유지 할 수 있기 때문에 구성변경(Configuration Change)와 액티비티 강제 종료에 대응이 가능함
+  - 액티비티의 onSaveInstanceState()가 호출될때 Fragment는 setArguments 함수를 통해 전달받은 값을 가지고 있는 FragmentState 값들을 saveAllState() 호출로 저장해주기 때문임
+  - Fragment의 onSaveInstanceState()를 오버라이드해서 사용할 수도 있지만 프레임워크에서 이미 제공하는 기능을 피할 이유는 없음
