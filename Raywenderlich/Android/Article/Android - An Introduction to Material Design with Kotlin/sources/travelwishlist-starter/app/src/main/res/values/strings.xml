@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">Around the world</string>
+  <string name="action_settings">Settings</string>
+  <string name="show_as_list">Show as list</string>
+  <string name="show_as_grid">Show as grid</string>
+  <string name="my_activities">MY ACTIVITIES</string>
+</resources>

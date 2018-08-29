@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+      android:id="@+id/placeImage"
+      android:layout_width="match_parent"
+      android:layout_height="220dp"
+      android:scaleType="centerCrop" />
+
+    <LinearLayout
+      android:id="@+id/revealView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#95000000">
+
+      <EditText
+        android:id="@+id/todoText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+  </FrameLayout>
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:id="@+id/placeNameHolder"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:background="@color/primary_dark" >
+
+      <TextView
+        android:id="@+id/placeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+      android:id="@+id/addButton"
+      android:layout_width="@dimen/floating_button_size"
+      android:layout_height="@dimen/floating_button_size"
+      android:layout_gravity="end"
+      android:layout_marginEnd="10dp"
+      android:layout_marginTop="28dp"
+      android:elevation="@dimen/button_elevation"
+      android:src="@drawable/icn_add" />
+
+  </FrameLayout>
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="-10dp"
+    android:text="@string/my_activities"
+    android:textAppearance="?android:attr/textAppearanceSmall"
+    android:textColor="@android:color/white" />
+
+  <ListView
+    android:id="@+id/activitiesList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:requiresFadingEdge="vertical" />
+
+</LinearLayout>
