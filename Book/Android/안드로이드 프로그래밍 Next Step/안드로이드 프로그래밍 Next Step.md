@@ -101,7 +101,7 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
 
 ## 4. Context
 
-- Context는 앱을 개발할때 어디서든 항상 만남. 액티비티 시작, 브로드캐스트 발생, 서비스 시작, 리소스 접근... Context는 여러 컴포넌트의 상위 클래스 이면서 Context를 통해 여러 컴포넌트가 연결되므로 Context를 자세히 살펴볼 필요가 있음
+- Context는 앱을 개발할때 어디서든 항상 만남. Context가 없으면 액티비티 시작, 브로드캐스트 발생, 서비스 시작, 리소스에 접근 할 수도 없음. Context는 여러 컴포넌트의 상위 클래스 이면서 Context를 통해 여러 컴포넌트가 연결되므로 Context를 자세히 살펴볼 필요가 있음
 
 - Context는 추상 클래스로 메서드 구현이 거의 없고 상수, 추상 메서드 정의로 이루어짐 (구현체는 ContextImpl)
 
@@ -162,6 +162,59 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
   - View 클래스는 생성자에 Context가 전달되어야 하는데 Activity에서 쓸 수 있는 3가지 Context 중 View와 연관이 깊은 Activity가 전달된 것을 알 수 있음
 
 ## 5. 액티비티
+
+- 앱에서 화면의 기본단위가 되고 가장 많이 쓰이는 컴포넌트임
+
+- 다른 컴포넌트와 마찬가지로 AndroidManifest.xml에 선언되어야 함
+
+- 내부에 UI 액션이 많고 로직이 많으면 액티비티를 고려하고, 팝업 형식으로 뜬다면 커스텀 레이아웃 다이얼로그나 DialogFragment, PopupWindow로 대체하는게 좋음. 기준을 단순하게 하자면 독립적인 화면은 액티비티가 적합하고, 종속적인 화면으로 보인다면 다른것을 쓰는게 좋음.
+
+- 액티비티에서는 setContentView() 메서드로 메인 뷰를 화면에 표시. setContentView()를 실행하지 않고, 로직에 따라 분기해서 다른 액티비티를 띄우는 용도로 사용하기도 함. (UI 없는 액티비티가 됨)
+
+> Intent의 스킴(scheme)에 따라 화면 분기하는 관문(Front controller) 역할로서의 액티비티
+
+```xml
+<activity android:name=".FrontControllerActivity">
+  <intent-filter>
+    <action android:name="android.intent.action.VIEW">
+    <category android:name="android.intent.category.DEFAULT">
+    <data android:scheme="doc">
+    <data android:scheme="xls">
+    <data android:scheme="ppt">
+```
+
+```java
+public class FrontControllerActivity extends Activity {
+
+  private static final String WORD_SCHEME = "doc"
+  private static final String EXCEL_SCHEME = "xls"
+  private static final String POWERPOINT_SCHEME = "ppt"
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState)
+
+    Uri uri = getIntet().getData();
+    if (uri == null) {
+      Toast.makeText(this, "Uri does not exist!!", Toast.LENGTH_LONG).show();
+    } else {
+      // (1)
+      switch (uri.getScheme()) {
+        case WORD_SCHEME:
+          startActivity(new Intent(this, WordActivity.class));
+          break;
+        case EXCEL_SCHEME:
+          startActivity(new Intent(this, ExcelActivity.class));
+          break;
+        case POWERPOINT_SCHEME:
+          startActivity(new Intent(this, PowerPointActivity.class));
+          break;
+      }
+      finish();
+    }
+  }
+}
+```
 
 ### 생명주기
 
