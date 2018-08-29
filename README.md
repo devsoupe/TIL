@@ -12,11 +12,11 @@
 
 - Article
 
-  - [안드로이드 아키텍쳐 컴포넌트 시작하기](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Android%20Architecture%20Components%20-%20Getting%20Started/Android%20Architecture%20Components%20-%20Getting%20Started.md)
+  - [안드로이드 아키텍쳐 컴포넌트 시작하기 (Android Architecture Components - Getting Started)](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Android%20Architecture%20Components%20-%20Getting%20Started/Android%20Architecture%20Components%20-%20Getting%20Started.md)
 
-  - [안드로이드 Jetpack 소개](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Introduction%20to%20Android%20Jetpack/Introduction%20to%20Android%20Jetpack.md)
+  - [안드로이드 Jetpack 소개 (Introduction to Android Jetpack)](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Introduction%20to%20Android%20Jetpack/Introduction%20to%20Android%20Jetpack.md)
 
-  - [안드로이드 머티리얼 디자인 소개](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin.md)
+  - [안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin.md)
 
 - Screencast
 
