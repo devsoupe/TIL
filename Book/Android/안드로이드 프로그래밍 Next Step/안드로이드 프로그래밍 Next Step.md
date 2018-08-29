@@ -119,6 +119,7 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
 
   - 시스템 서비스 접근 : ContextImpl의 정적 초기화 블록에서 클래스가 최초 로딩될 때 시스템 서비스를 매핑함. 후엔 Context 클래스에 XXX_SERVICE 상수 형태로 정의된 값을 전달 인자로 하여 getSystemService()를 호출하면 시스템 서비스를 가져다 쓸 수 있음 ```getSystemService(Context.ALARM_SERVICE)```
 
+  <!--
   ```mermaid
   classDiagram
   Context <|-- ContextWrapper
@@ -126,10 +127,11 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
   ContextWrapper <|-- Activity
   ContextWrapper <|-- Service
   ContextWrapper <|-- Application
-  ContextWrapper --> ContextImpl
+  ContextImpl <-- ContextWrapper
   Context
   ```
-
+  -->
+  
   - Activity, Service, Application는 ContextImpl을 직접 상속하지 않고 ContextWrapper를 통한 구성형태로 ContextImpl 기능을 호출함. 이를 통해 ContextImpl의 변수가 노출되지 않고 ContextImpl의 공개 메서드만 호출하게 됨
 
 - 사용 가능한 Context 종류 (Activity 코드에서 Context를 쓰는 방법)
@@ -156,7 +158,6 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
     Log.d(TAG, "4th=" + (statusView.getContext() == getApplication())); // (4) false
   }
   ```
-  
   
   - View 클래스는 생성자에 Context가 전달되어야 하는데 Activity에서 쓸 수 있는 3가지 Context 중 View와 연관이 깊은 Activity가 전달된 것을 알 수 있음
 
