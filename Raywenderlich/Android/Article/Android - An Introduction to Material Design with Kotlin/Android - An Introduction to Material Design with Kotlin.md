@@ -14,7 +14,7 @@
   
   - RecyclerView, CardView에서 동적으로 뷰 생성 방법
 
-  - 텍스트나 배경에 사용할 팔레트 API를 사용하여 색 구성표 생성
+  - 텍스트나 배경에 사용할 팔레트 API를 사용하여 색 스킴 생성
 
   - 안드로이드 애니메이션 API를 사용해서 멋진 인터랙션 만드는 법
 
@@ -36,11 +36,11 @@
 
   <br>![](images/003.png)<br>
 
-- 현재는 아무것도 없이 비어있지만 머티리얼 컴포넌트인 동적 뷰, 색 구성표, 애니메이션을 활용해 멋진 사진 세트를 추가할 것임
+- 현재는 아무것도 없이 비어있지만 머티리얼 컴포넌트인 동적 뷰, 색 스킴, 애니메이션을 활용해 멋진 사진 세트를 추가할 것임
 
 - 앱 수준의 **build.gradle** 파일을 열어서 RecyclerView, CardView, Palette, Picasso 의존성을 추가함
 
-```
+```gradle
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -58,9 +58,40 @@ dependencies {
 
 - 의존성을 추가했으면 앱에 머티리얼 디자인을 적용할 시간
 
-## 테마 세팅
+## 테마 설정하기
+
+- **res/values/style.xml** 파일을 열어서 기본으로 설정되어 있는 ```Theme.AppCompat.Light.DarkActionBar``` 테마에 아래 항목을 추가함
+
+```xml
+<item name="android:navigationBarColor">@color/primary_dark</item>
+<item name="android:displayOptions">disableHome</item>
+```
+
+- 안드로이드는 colorPrimary는 액션바에 colorPrimaryDark는 상태바에 colorAccent는 텍스트 입력, 체크박스 같은 위젯에 자동으로 적용됨. 위 옵션은 하단 네비게이션바에 색상 및 설정을 추가함
+
+- 빌드 후 실행하면 네비게이션바에 새로운 색 스킴이 적용됨
+
+  <br>![](images/004.png)<br>
+
+- 미묘한 변화지만 이처럼 Travel Wishlist가 한 단계씩 업그레이드 될것임
 
 ## RecyclerView, CardView 사용하기
+
+- 제한된 화면에 많은 양의 데이터를 보여주기 위해 ListView보다 다재다능한 RecyclerView를 사용하여 같은 데이터지만 다양한 Grid 형태로 보여줄 것임
+
+- **activity_main.xml**을 열고 LinearLayout안에 다음을 추가함
+
+```xml
+<android.support.v7.widget.RecyclerView
+  android:id="@+id/list"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/light_gray" />
+```
+
+- 액티비티에 추가한 RecyclerView는 부모 영역 전체를 차지하게 함
+
+
 
 ## 리스트에서 팔레트 API 사용하기
 
