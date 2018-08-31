@@ -12,7 +12,7 @@
 
   - 머티리얼 테마 구현
   
-  - RecyclerView, CardView에서 동적으로 뷰 생성 방법
+  - ```RecyclerView```, ```CardView```에서 동적으로 뷰 생성 방법
 
   - 텍스트나 배경에 사용할 팔레트 API를 사용하여 색 스킴 생성
 
@@ -67,7 +67,7 @@ dependencies {
 <item name="android:displayOptions">disableHome</item>
 ```
 
-- 안드로이드는 colorPrimary는 액션바에 colorPrimaryDark는 상태바에 colorAccent는 텍스트 입력, 체크박스 같은 위젯에 자동으로 적용됨. 위 옵션은 하단 네비게이션바에 색상 및 설정을 추가함
+- 안드로이드는 ```colorPrimary```는 액션바에 ```colorPrimaryDark```는 상태바에 ```colorAccent```는 텍스트 입력, 체크박스 같은 위젯에 자동으로 적용됨. 위 옵션은 하단 네비게이션바에 색상 및 ```android:displayOptions```에 ```disableHome``` 설정을 추가함
 
 - 빌드 후 실행하면 네비게이션바에 새로운 색 스킴이 적용됨
 
@@ -77,9 +77,9 @@ dependencies {
 
 ## RecyclerView, CardView 사용하기
 
-- 제한된 화면에 많은 양의 데이터를 보여주기 위해 ListView보다 다재다능한 RecyclerView를 사용하여 같은 데이터지만 다양한 Grid 형태로 보여줄 것임
+- 제한된 화면에 많은 양의 데이터를 보여주기 위해 ```ListView```보다 다재다능한 ```RecyclerView```를 사용하여 같은 데이터지만 다양한 Grid 형태로 보여줄 것임
 
-- **activity_main.xml**을 열고 LinearLayout안에 다음을 추가함
+- **activity_main.xml**을 열고 ```LinearLayout```안에 다음을 추가함
 
 ```xml
 <android.support.v7.widget.RecyclerView
@@ -89,7 +89,28 @@ dependencies {
   android:background="@color/light_gray" />
 ```
 
-- 액티비티에 추가한 RecyclerView는 부모 영역 전체를 차지하게 함
+- 액티비티에 추가한 ```RecyclerView```는 부모 영역 전체를 차지하게 함
+
+- 자동 Import문 설정. **Preferences\Editor\General\Auto Import**로 이동해서 **Add unambiguous imports on the fly** 체크박스를 체크함. 수동으로 넣어주거나 Alt+Enter에서 구해줄것임
+
+```java
+lateinit private var staggeredLayoutManager: StaggeredGridLayoutManager
+```
+
+- ```LayoutManager```를 추가하고 ```onCreate()``` 함수에 초기화 코드를 작성함
+
+```java
+staggeredLayoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+list.layoutManager = staggeredLayoutManager
+```
+
+- ```RecyclerView```에 ```StaggeredGridLayoutManager```를 레이아웃 매니저로 설정함. 설정값은 1, ```StaggeredGridLayoutManager.VERTICAL```. 1 설정값은 Grid 형태가 아닌 List 형태로 보이게 함. 나중에 두개의 컬럼 형태로 보이게 할것임
+
+- **Kotlin Android Extensions***를 사용하고 있다면 ```list```를 사용하기 위해 ```findViewById()```를 할 필요가 없음. 그냥 ```list```를 사용하면 아래 import문이 자동으로 추가됨
+
+```java
+import kotlinx.android.synthetic.main.activity_main.*
+```
 
 
 

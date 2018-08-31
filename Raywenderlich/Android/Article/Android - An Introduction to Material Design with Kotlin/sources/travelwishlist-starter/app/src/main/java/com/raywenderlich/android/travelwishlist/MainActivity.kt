@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     isListView = true
 
     staggeredGridLayoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+    list.layoutManager = staggeredGridLayoutManager
   }
 
   private fun setUpActionBar() {
