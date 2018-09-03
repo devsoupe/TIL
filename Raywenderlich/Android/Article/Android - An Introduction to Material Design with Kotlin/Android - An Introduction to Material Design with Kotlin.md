@@ -232,7 +232,7 @@ override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
 2. ```onCreateViewHolder(...)```는 ```row_places```를 inflated 한 뷰를 매개변수로 넘겨받아 생성한 ViewHolder 인스턴스를 넘겨줌
 
-3. ```onBindViewHolder(...)```는 ```Place``` 객체를 ``ViewHolder```안에 있는 UI 요소에 바인드 시킴. Picasso는 이미지 캐시를 위해 사용함
+3. ```onBindViewHolder(...)```는 ```Place``` 객체를 ```ViewHolder```안에 있는 UI 요소에 바인드 시킴. Picasso는 이미지 캐시를 위해 사용함
 
 - ```MainActivity```에 새로 만든 adapter 변수를 추가함
 
