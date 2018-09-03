@@ -1,4 +1,4 @@
-# Android - An Introduction to Material Design with Kotlin
+# 안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)
 
 > Version
 
@@ -34,7 +34,7 @@
 
 - 다운로드 받은 프로젝트를 빌드하고 실행하면 아래와 같이 기본적인 인터페이스가 화면에 표시됨
 
-  <br>![](images/003.png)<br>
+<br>![](images/003.png)<br>
 
 - 현재는 아무것도 없이 비어있지만 머티리얼 컴포넌트인 동적 뷰, 색 스킴, 애니메이션을 활용해 멋진 사진 세트를 추가할 것임
 
@@ -71,7 +71,7 @@ dependencies {
 
 - 빌드 후 실행하면 네비게이션바에 새로운 색 스킴이 적용됨
 
-  <br>![](images/004.png)<br>
+<br>![](images/004.png)<br>
 
 - 미묘한 변화지만 이처럼 Travel Wishlist가 한 단계씩 업그레이드 될것임
 
@@ -93,26 +93,163 @@ dependencies {
 
 - 자동 Import문 설정. **Preferences\Editor\General\Auto Import**로 이동해서 **Add unambiguous imports on the fly** 체크박스를 체크함. 수동으로 넣어주거나 Alt+Enter에서 구해줄것임
 
-```java
+```kotlin
 lateinit private var staggeredLayoutManager: StaggeredGridLayoutManager
 ```
 
 - ```LayoutManager```를 추가하고 ```onCreate()``` 함수에 초기화 코드를 작성함
 
-```java
+```kotlin
 staggeredLayoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 list.layoutManager = staggeredLayoutManager
 ```
 
 - ```RecyclerView```에 ```StaggeredGridLayoutManager```를 레이아웃 매니저로 설정함. 설정값은 1, ```StaggeredGridLayoutManager.VERTICAL```. 1 설정값은 Grid 형태가 아닌 List 형태로 보이게 함. 나중에 두개의 컬럼 형태로 보이게 할것임
 
-- **Kotlin Android Extensions***를 사용하고 있다면 ```list```를 사용하기 위해 ```findViewById()```를 할 필요가 없음. 그냥 ```list```를 사용하면 아래 import문이 자동으로 추가됨
+- **Kotlin Android Extensions**를 사용하고 있다면 ```list```를 사용하기 위해 ```findViewById()```를 할 필요가 없음. 그냥 ```list```를 사용하면 아래 import문이 자동으로 추가됨
 
-```java
+```kotlin
 import kotlinx.android.synthetic.main.activity_main.*
 ```
 
+- 둥근 모서리, 그림자를 포함한 ```CardView```는 일관된 형태로 행/셀을 구현할 수 있음. ```CardView```는 ```FrameLayout```을 상속받기에 기본적으로 다른 자식뷰를 가질 수 있음
 
+- **res\layout** 디렉토리로 이동하여 **Layout resource file** 메뉴를 통해 새로운 리소스 파일을 만들고 이름은 **row_places.xml**, 부모는 **android.support.v7.widget.CardView**로 함
+
+![](images/005.png)
+
+- 원하는 셀을 만들기 위해 아래 코드로 내용을 교체함
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:card_view="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/placeCard"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_margin="8dp"
+  card_view:cardCornerRadius="@dimen/card_corner_radius"
+  card_view:cardElevation="@dimen/card_elevation">
+
+  <ImageView
+    android:id="@+id/placeImage"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:scaleType="centerCrop" />
+
+  <LinearLayout
+    android:id="@+id/placeHolder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:selectableItemBackground"
+    android:orientation="horizontal" />
+
+  <LinearLayout
+    android:id="@+id/placeNameHolder"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal">
+
+    <TextView
+      android:id="@+id/placeName"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical"
+      android:gravity="start"
+      android:paddingStart="10dp"
+      android:paddingEnd="10dp"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:textColor="@android:color/white" />
+
+  </LinearLayout>
+
+</android.support.v7.widget.CardView>
+```
+
+- ```xmlns:card_view="http://schemas.android.com/apk/res-auto```를 넣음으로써  ```card_view:cardCornerRadius```와 ```card_view:cardElevation```같은 속성을 정의할 수 있음
+
+- ```?android:selectableItemBackground```를 배경으로 넣으면 **ripple** 이펙트 애니메이션이 활성화 됨
+
+- ```RecyclerView```에 데이터를 바인딩 하기 위해 Adapter를 사용함. **main/java*** 폴더로 가서 **com.raywenderlich.android.travelwishlist*** 패키지에서 오른쪽 마우스 버튼 클릭 후 **New\Kotlin File/Class**를 선택하고 종류를 클래스로 변경 후 이름을 **TravelListAdapter**로 함
+
+- **TravelListAdapter**에 아래의 내용을 추가함
+
+```kotlin
+// 1
+class TravelListAdapter(private var context: Context) : RecyclerView.Adapter<TravelListAdapter.ViewHolder>() {
+
+  override fun getItemCount(): Int {
+
+  }
+
+  override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+
+  }
+
+  override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+
+  }
+
+  // 2
+  inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+  }
+}
+```
+
+- 변경 사항을 보면
+
+1. ```RecyclerView.Adapter```를 상속받아 ```TravelListAdapter```를 만들고 구현해야 할 항목들을 오버라이드 함. 생성자에 ```Context```를 받도록 변경하고 ```MainActivity``` 인스턴스를 넘겨받음
+
+2. 각 셀별로 ```findViewById()```를 하지않아 스크롤 성능을 향상시키는 ```ViewHolder``` 패턴을 적용하기 위해 ```ViewHodler``` inner 클래스를 만듬. ```ViewHolder```는 ```ListView```에서는 옵션이었지만 ```RecyclerView```에서는 강제임.
+
+- ```TravelListAdapter``` 클래스의 ```RecyclerView.Adapter``` 오버라이드 함수들을 아래와 같이 수정함
+
+```kotlin
+// 1
+override fun getItemCount() = PlaceData.placeList().size
+
+// 2
+override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+  val itemView = LayoutInflator.from(parent.context).inflate(R.layout.row_places, parent, false)
+  return ViewHolder(itemView)
+}
+
+// 3
+override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+  val place = PlaceData.placeList()[position]
+  holder.itemView.placeName.text = place.name
+
+  Picasso.with(context).load(place.getImageResourceId(context)).into(holder.itemView.placeImage)
+}
+```
+
+- 변경 사항을 보면
+
+1. ```getItemCount()```는 아이템 개수를 넘겨줌. 여기서는 ```PlaceData.placeList()```의 개수를 사용
+
+2. ```onCreateViewHolder(...)```는 ```row_places```를 inflated 한 뷰를 매개변수로 넘겨받아 생성한 ViewHolder 인스턴스를 넘겨줌
+
+3. ```onBindViewHolder(...)```는 ```Place``` 객체를 ``ViewHolder```안에 있는 UI 요소에 바인드 시킴. Picasso는 이미지 캐시를 위해 사용함
+
+- ```MainActivity```에 새로 만든 adapter 변수를 추가함
+
+```kotlin
+lateinit private var adapter: TravelListAdapter
+```
+
+- ```onCreate()``` 함수에서 맨 아래에 adapter 인스턴스를 만든다음 ```RecyclerView```에 전달함
+
+```kotlin
+adapter = TravelListAdapter(this)
+list.adapter = adapter
+```
+
+- 빌드 후 실행하면 places 목록으로 채워진 화면을 볼 수 있음
+
+<br>![](images/006.png)<br>
 
 ## 리스트에서 팔레트 API 사용하기
 

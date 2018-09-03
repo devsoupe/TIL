@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:card_view="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/placeCard"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_margin="8dp"
+  card_view:cardCornerRadius="@dimen/card_corner_radius"
+  card_view:cardElevation="@dimen/card_elevation">
+
+  <ImageView
+    android:id="@+id/placeImage"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:scaleType="centerCrop" />
+
+  <!-- Used for the ripple effect on touch -->
+  <LinearLayout
+    android:id="@+id/placeHolder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:selectableItemBackground"
+    android:orientation="horizontal" />
+
+  <LinearLayout
+    android:id="@+id/placeNameHolder"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal">
+
+    <TextView
+      android:id="@+id/placeName"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical"
+      android:gravity="start"
+      android:paddingStart="10dp"
+      android:paddingEnd="10dp"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:textColor="@android:color/white" />
+
+  </LinearLayout>
+
+</android.support.v7.widget.CardView>
