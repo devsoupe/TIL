@@ -22,7 +22,7 @@
 
 ### Android
 
-- [안드로이드 메모리 Leak]()
+- [안드로이드 메모리 Leak](https://github.com/PerelandraX/TIL/blob/master/Cheat%20Sheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak.md)
 
   <!-- - [안드로이드 아키텍쳐 컴포넌트 시작하기 (Android Architecture Components - Getting Started)](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Android%20Architecture%20Components%20-%20Getting%20Started/Android%20Architecture%20Components%20-%20Getting%20Started.md)
 
