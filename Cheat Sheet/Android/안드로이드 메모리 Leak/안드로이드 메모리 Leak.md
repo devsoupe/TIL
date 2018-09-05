@@ -1,14 +1,15 @@
-# 안드로이드 메모리 Leak
+# 안드로이드 메모리 릭```Leak```
 
-## Inner, Anonymous Class
+안드로이드에서는 일반적으로 액티비티```Activity```나 컴포넌트```Component```들을 정적```static``` 변수, 싱글턴```singleton``` 객체의 변수에 전달하여 할당하는 경우나  내부 클래스와 익명 클래스에서 핸들러```Handler```, ```AsyncTask```, 스레드```Thread```, 타이머```Timer```등을 사용하는 경우에 메모리 릭을 유발할 수 있다.
 
-- Android에서 일반적으로 메모리 Leak을 유발하는 경우는 ```Activity```나 ```Component```들을 static 리소스로 혹은 singleton 객체에 전달하여 관리하는 경우, ```Inner Class```와 ```Anonymous Class```에서 ```Handler```, ```AsyncTask```, ```Thread```, ```Timer```등을 사용하는 경우임
-
-- 기본적으로 Java의 일반적인 객체는 ```strong reference```임. 보통 GC 대상을 선정하는 과정에서 reachable, unreachable로 나뉘게 되는게 root set으로 부터 시작된 참조 사슬에 포함이 되어 있으면 reachable 객체, 아니면 unreachable로 나뉘게 됨. 메모리에서 사라져야 될 타이밍에 어떠한 이유로 인해 reachable 상태로 유지되어 GC 대상이 되지 못하면 Leak이 발생하게 됨
-
-> Android의 ```Handler```에서 메모리 Leak을 유발하는 코드
+기본적으로 자바에서 일반적인 객체는 강한 참조```strong reference```형태를 가진다. 보통은 가비지 컬렉션```Garbage Collection, 이하 GC``` 대상을 선정하는 과정에서 ```reachable```, ```unreachable```로 나뉘게 되는데 루트 셋 ```root set```으로부터 시작된 참조 사슬에 포함이 되어 있으면 ```reachable``` 객체, 아니면 ```unreachable```로 나뉘게 된다. 메모리에서 사라져야 될 상황에  어떠한 이유로 인해 객체가 ```reachable``` 상태로 유지되면 가비지 컬랙션의 대상이 되지 못하고 메모리 릭이 발생하게 된다.
 
 ```java
+/*
+* 안드로이드 핸들러에서 메모리 릭을 유발하는 코드
+*/
+
+
 public class LeakActivity extends Activity {
 
   // inner class (Handler)
