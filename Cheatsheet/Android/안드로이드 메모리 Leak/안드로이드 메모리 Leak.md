@@ -1,6 +1,8 @@
 # 안드로이드 메모리 릭```Leak```
 
-안드로이드에서는 일반적으로 액티비티```Activity```나 컴포넌트```Component```들을 정적```static``` 변수, 싱글턴```singleton``` 객체의 변수에 전달하여 할당하는 경우나  내부 클래스```inner class```와 익명 클래스```anonymous class```에서 핸들러```Handler```, ```AsyncTask```, 스레드```Thread```, 타이머```Timer```등을 사용하는 경우에 메모리 릭을 유발할 수 있다.
+## 내부 클래스```inner class```, 익명 클래스```anonymous class```의 메모리 릭
+
+안드로이드에서는 일반적으로 액티비티```Activity```나 컴포넌트```Component```들을 정적```static``` 변수, 싱글턴```singleton``` 객체의 변수에 전달하여 할당하는 경우나 내부 클래스와 익명 클래스에서 핸들러```Handler```, ```AsyncTask```, 스레드```Thread```, 타이머```Timer```등을 사용하여 오래 걸리는 작업을 진행하는 경우에 메모리 릭을 유발할 수 있다.
 
 기본적으로 자바에서 일반적인 객체는 강한 참조```strong reference```형태를 가진다. 보통은 가비지 컬렉션```Garbage Collection, 이하 GC``` 대상을 선정하는 과정에서 ```reachable```, ```unreachable```로 나뉘게 되는데 루트 셋```root set```으로부터 시작된 참조 사슬에 포함이 되어 있으면 ```reachable``` 객체, 아니면 ```unreachable```로 나뉘게 된다. 메모리에서 사라져야 될 상황에  어떠한 이유로 인해 객체가 ```reachable``` 상태로 유지되면 가비지 컬랙션의 대상이 되지 못하고 메모리 릭이 발생하게 된다.
 
@@ -11,7 +13,7 @@
 
 public class LeakActivity extends Activity {
 
-  // inner class (Handler)
+  // 내부 클래스
   private final Handler handler = new Handler() {
 
     @Override
@@ -24,7 +26,7 @@ public class LeakActivity extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    handler.postDelayed(new Runnable() { // anonymous class (Runnable)
+    handler.postDelayed(new Runnable() { // 익명 클래스
 
       @Override
       public void run() {
@@ -50,12 +52,12 @@ public class LeakActivity extends Activity {
 ```java
 
 /**
-* 메모리 Leak에 대한 수정안
+* 메모리 릭에 대한 수정안
 */
 public class NonLeakActivity extends Activity {
   private NonLeakHandler handler = new NonLeakHandler(this);
   
-  // static inner class (Activity 참조를 위해 클래스 상속)
+  // 내부 클래스 -> 정적 내부 클래스 (액티비티 참조 변수를 가지기 위해 클래스 상속)
   private static final class NonLeakHandler extends Handler {
     private final WeakReference<NonLeakActivity> ref;
     
@@ -66,13 +68,13 @@ public class NonLeakActivity extends Activity {
     @Override
     public void handleMessage(Message msg) {
       NonLeakActivity act = ref.get();
-      if (act != null) {
+      if (act != null) { // 액티비티가 유지된 경우에만 리소스 접근 작업을 함
         
       }
     }
   }
   
-  // static inner class
+  // 익명 클래스 -> 정적 내부 클래스
   private static final Runnable runnable = new Runnable() {
 
     @Override
@@ -91,6 +93,4 @@ public class NonLeakActivity extends Activity {
 }
 ```
 
-- ```Runnable```도 ```Anonymous class```에서 ```static inner class```로 변경 함. ```Anonymous class```도 ```non-static inner class```와 마찬가지로 ```outer class```에 대한 ```reference```를 가지게 되기 때문
-
-- 즉, ```Inner class```, ```Anonymous class``` 모두 ```Activity```의 생명주기와 동일하게 생성 및 종료가 보장된다면 ```non-static inner class```로 정의해도 되지만, 아닌 경우는 ```static inner class``` 정의해야 된다는 것
+익명 클래스도 비정적 내부 클래스와 마찬가지로 외부 클래스에 대한 참조를 가지게 되기 때문에 익명 클래스로 사용했던 ```Runnable```도 정적 내부 클래스로 변경한다. 내부 클래스, 익명 클래스 모두 액티비티의 생명주기와 동일하게 생성 및 종료가 보장되지 않는다면 정적 내부 클래스로 정의해야 메모리 릭을 방지할 수 있다.
