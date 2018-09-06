@@ -2,7 +2,7 @@
 
 <!-- ## Book
 
-### Android
+### Android -->
 
 ## Raywenderlich
 
@@ -10,17 +10,17 @@
 
 - Article
 
+  - [안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)](Raywenderlich/Android/Article/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin.md)
+
 - Screencast
 
-- Video Course -->
+- Video Course
 
 ## Cheatsheet
 
 ### Android
 
-- [안드로이드 메모리 릭```Leak```](Cheatsheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak.md)
-
-<!-- - [안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin.md) -->
+  - [안드로이드 메모리 릭```Leak```](Cheatsheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak.md)
 
 <!-- - [안드로이드 프로그래밍 Next Step](https://github.com/PerelandraX/TIL/blob/master/Book/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20Next%20Step/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20Next%20Step.md) -->
 
