@@ -23,7 +23,7 @@
 
 Travel Wishlist 앱은 세계 여러지역에 있는 이미지들을 선택하여 노트에 추가하는 앱이다. 다운로드 받은 프로젝트를 빌드하고 실행하면 아래와 같이 기본적인 인터페이스가 화면에 표시됨을 확인한다.
 
-<br><center><img src="images/003.png"></center><br>
+<br>![](images/003.png)<br>
 
 현재는 아무것도 없이 비어있지만 머티리얼 컴포넌트인 동적 뷰, 색 스킴, 애니메이션을 활용해 멋진 사진 세트를 추가할 것이다. 우선 앱 수준의 ```build.gradle``` 파일을 열어서 ```RecyclerView```, ```CardView```, ```Palette```, ```Picasso``` 의존성을 추가한다.
 
@@ -54,7 +54,7 @@ dependencies {
 
 안드로이드는 기본적으로 ```colorPrimary```는 액션바에 ```colorPrimaryDark```는 상태바에 ```colorAccent```는 텍스트 입력, 체크박스 같은 위젯에 자동으로 적용된다. 위 옵션은 하단 네비게이션바에 색상 및 ```android:displayOptions```에 ```disableHome``` 설정을 추가하는 것이다. 빌드 후 실행하면 네비게이션바에 새로운 색 스킴이 적용된다.
 
-  <br><center><img src="images/004.png"></center><br>
+<br>![](images/004.png)<br>
 
 미묘한 변화지만 이처럼 Travel Wishlist가 한 단계씩 업그레이드 될 것이다.
 
@@ -214,7 +214,7 @@ list.adapter = adapter
 
 빌드 후 실행하면 places 목록으로 채워진 화면을 볼 수 있다.
 
-  <br><center><img src="images/006.png"></center><br>
+<br>![](images/006.png)<br>
 
 ## 리스트에서 팔레트 API 사용하기
 
