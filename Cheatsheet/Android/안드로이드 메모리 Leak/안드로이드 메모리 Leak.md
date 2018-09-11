@@ -2,9 +2,9 @@
 
 ## 내부 클래스`inner class`와 익명 클래스`anonymous class`
 
-안드로이드에서 일반적으로 액티비티`Activity`나 컴포넌트`Component`들을 정적`static` 변수나 싱글턴`singleton` 객체안의 변수에 전달하여 할당하는 경우, 내부 클래스와 익명 클래스에서 핸들러`Handler`, `AsyncTask`, 스레드`Thread`, 타이머`Timer`등을 사용하여 오랜시간 걸리는 작업을 진행하는 경우에 메모리 릭을 유발할 수 있다.
+안드로이드에서 일반적으로 액티비티`Activity`나 컴포넌트`Component`들을 정적`static` 변수나 싱글턴`singleton` 객체안의 변수에 전달하여 할당하는 경우나 내부 클래스와 익명 클래스에서 핸들러`Handler`, `AsyncTask`, 스레드`Thread`, 타이머`Timer`등을 사용하여 오랜시간 걸리는 작업을 진행하는 경우 메모리 릭이 발생할 수 있다.
 
-기본적으로 자바의 일반 객체는 강한 참조`strong reference`형태를 가지는데 그에 기반하여 가비지 컬렉션`Garbage Collection, 이하 GC`은 그 대상을 선정하는 과정에서 `reachable`, `unreachable`로 구분하게 된다. 루트 셋`root set`으로부터 시작된 참조 사슬에 포함이 되어 있으면 `reachable` 객체 아니면 `unreachable`로 나누는 것이다. 메모리에서 사라져야 될 상황에 어떠한 이유로 인해 객체가 `reachable` 상태로 유지되면 가비지 컬랙션의 대상이 되지 못해 힙에 계속 남게 되고 메모리 릭을 유발하게 된다.
+기본적으로 자바의 일반 객체는 강한 참조`strong reference`형태를 가진다. 강한 참조 기반으로 가비지 컬렉션`Garbage Collection, 이하 GC`은 그 대상을 선정하는 과정에서 `reachable`, `unreachable`로 구분하게 되는데 루트 셋`root set`으로부터 시작된 참조 사슬에 포함이 되어 있으면 `reachable` 객체 아니면 `unreachable`로 구분한다. 메모리에서 사라져야 될 상황에 어떠한 이유로 인해 객체가 `reachable` 상태로 유지되면 가비지 컬랙션의 대상이 되지 못해 힙에 계속 남게 되고 메모리 릭이 발생하게 된다.
 
 ```java
 /*
