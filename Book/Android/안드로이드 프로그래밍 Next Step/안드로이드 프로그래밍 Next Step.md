@@ -8,7 +8,7 @@
 
 애플리케이션 계층은 선탑재된 기본 앱(시스템 권한 사용), 일반 앱으로 나뉘고 애플리케이션 프레임워크 스택 위에서 동작한다. 
 
-애플리케이션 프레임워크는 파일 네이밍`Naming`이 매니저`Manager` 형태로 구현되어 있고, 대부분이 자바로 구성되어 있으나 하드웨어 제어나 빠른 속도를 위해 JNI를 연결해서 네이티브 C/C++ 코드를 사용하기도 한다. `ActivityManager, ResourceManager, TelephonyManager, LocationManager...` 애플리케이션 프레임워크의 각종 Manager에서 서버 기능은 별도 프로세스인 서버 시스템`system_server`에서 동작하고 앱 프로세스는 씬 클라이언트`thin clinet`에서 실행된다. 앱 프로세스는 컴포넌트 탐색, 액티비티 스택 관리, 서비스 목록 유지, ANR 처리 등을 직접 처리하지 않고, 서버 시스템 프로세스에 위임해 실제로는 컴포넌트 실행 등 최소한의 역할만 담당한다. 이러한 역할로 보면 시스템 서버는 여러 앱을 통합해서 관리하는 '통합 문의 채널'이 된다. 애플리케이션 프레임워크의 여러 매니저들는 시스템 서비스 형태로 존재하는데 접근시에는 컨텍스트`Context`의 `getSystemService(String name)` 메서드를 사용해야 한다. 시스템 서버는 별도 프로세스에서 실행되므로 앱(씬 클라이언트)에서 시스템 서비스에 접근할때는 프로세스간 통신인 `Binder IPC`가 필요하다.
+애플리케이션 프레임워크는 네이밍`Naming`이 매니저`Manager` 형태로 구현되어 있고, 대부분이 자바로 구성되어 있으나 하드웨어 제어나 빠른 속도를 위해 JNI를 연결해서 네이티브 C/C++ 코드를 사용하기도 한다. `ActivityManager, ResourceManager, TelephonyManager, LocationManager...` 애플리케이션 프레임워크의 각종 매니저에서 서버 기능은 별도 프로세스인 서버 시스템`system_server`에서 동작하고 앱 프로세스는 씬 클라이언트`thin clinet`에서 실행된다. 앱 프로세스는 컴포넌트 탐색, 액티비티 스택 관리, 서비스 목록 유지, ANR 처리 등을 직접 처리하지 않고, 서버 시스템 프로세스에 위임해 실제로는 컴포넌트 실행 등 최소한의 역할만 담당한다. 이러한 역할로 보면 시스템 서버는 여러 앱을 통합해서 관리하는 '통합 문의 채널'이 된다. 애플리케이션 프레임워크의 여러 매니저들는 시스템 서비스 형태로 존재하는데 접근시에는 컨텍스트`Context`의 `getSystemService(String name)` 메서드를 사용해야 한다. 시스템 서버는 별도 프로세스에서 실행되므로 앱(씬 클라이언트)에서 시스템 서비스에 접근할때는 프로세스간 통신인 `Binder IPC`가 필요하다.
 
 안드로이드 런타임은 달빅 가상머신(롤리팝부터 달빅 대신 아트`ART`)과 코어 라이브러리로 구성되어 있고, 런타임은 레지스트 기반의 가상 머신으로 자바 가상 머신보다 명령이 단순하고 빠르다.
 
@@ -16,7 +16,7 @@
 
 ### 프레임워크 소스
 
-- 안드로이드에서 기반이 되는 자바 버전은 프로요까지 자바5, 젤리빈/킷캣/롤리팝까지 자바6, 마시멜로까지 자바7, 누가/오레오까지 자바8
+안드로이드에서 기반이 되는 자바 버전은 프로요까지 자바5, 젤리빈/킷캣/롤리팝까지 자바6, 마시멜로까지 자바7, 누가/오레오까지 자바8에 해당된다.
 
 ### 안드로이드 버전
 
@@ -33,45 +33,40 @@
 누가 | 24 | 7.0
 오레오 | 26, 27 | 8.0
 
-- 안드로이드 앞자리 숫자가 바뀌는 버전 11(허니콤), 14(아이스크림 샌드위치), 21(롤리팝), 23(마시멜로), 24(누가), 26(오레오)
+안드로이드 앞자리 숫자가 바뀌는 버전은 11(허니콤), 14(아이스크림 샌드위치), 21(롤리팝), 23(마시멜로), 24(누가), 26(오레오)이다. 
 
-- 안드로이드 버전 지정은 AndroidManifest.xml에서 uses-sdk 항목 중 android:minSdkVersion, android:targetSdkVersion을 기재하면됨. 현재는 대부분 안드로이드 스튜디오를 사용하므로 build.gradle에서 두 항목을 오버라이드 해서 많이 사용
+안드로이드 버전 지정은 안드로이드 매니페스트`AndroidManifest.xml`에서 `uses-sdk` 항목 중 `android:minSdkVersion`, `android:targetSdkVersion`을 기재하면 된다. 현재는 대부분 안드로이드 스튜디오를 사용하므로 `build.gradle`에서 두 항목을 오버라이드 해서 많이 사용한다. `targetSdkVersion`을 지정하지 않으면 `minSdkVersion`과 동일한 값으로 지정되므로 반드시 지정하는게 좋다. `targetSdkVersion`을 지정한다는 것은 해당 버전까지는 테스트해서 앱을 실행하는 데 문제가 없고, 그 버전까지는 호환성 모드를 쓰지 않겠다는 뜻이 된다.
 
-- targetSdkVersion은 반드시 지정하는게 좋음. 지정하지 않으면 minSdkVersion과 동일한 값으로 지정됨. targetSdkVersion을 지정한다는 것은 해당 버전까지는 테스트해서 앱을 실행하는 데 문제가 없고, 그 버전까지는 호환성 모드를 쓰지 않음
+호환성 모드는 안드로이드 버전이 올라가더라도 앱의 기존 동작이 바뀌는 것을 방지하기 위한 것으로 호환성 모드로 동작되게 두는 것 보다는 `targetSdkVersion`을 높여 쓰는 것이 단말의 최신 기능을 쓸 수 있게 되기 때문에 더 권장된다.
 
-- 호환성 모드는 안드로이드 버전이 올라가더라도 앱의 기존 동작이 바뀌는 것을 방지하기 위한 것으로 호환성 모드로 동작되게 두는 것 보다는 targetSdkVersion을 높여 쓰는 것이 단말의 최신 기능을 쓸 수 있게 되기 때문에 권장됨
+* `AsyncTask` 병렬/순차 실행 : 허니콤 이전 버전에선 `AsyncTask` 태스크`Task`가 병렬로 실행되는데 허니콤 부터는 순차적으로 실행된다. 그러므로 `targetSdkVersion`이 10 이하이면 안드로이드 버전이 높다고 해도 병렬 실행하게 된다.
 
-  - AsyncTask 병렬/순차 실행 : 허니콤 이전 버전에선 AsyncTask 태스크가 병렬 실행. 허니콘 부터는 순차 실행. targetSdkVersion이 10 이하이면 안드로이드 버전이 높다고 해도 병렬 실행하게됨
+* 메인 스레드 상에서 네트워크 통신 : API 9 까지 메인 스레드 상에서 네트워크 통신 허용했으나 그 이후는 `NetworkOnMainThreadException` 발생한다.
 
-  - 메인 스레드 상에서 네트워크 통신 : API 9 까지 메인 스레드 상에서 네트워크 통신 허용. 그 이후는 NetworkOnMainThreadException 발생
+* 하드웨어 가속 : `GPU`를 가지고 뷰`View`에서 캔버스`Canvas`에 그리는 작업을 말하며 허니콤에서 처음 시작되었고 `targetSdkVersion`이 14 이상이면 디폴트 옵션이다.
 
-  - 하드웨어 가속 : GPU를 가지고 View에서 Canvas에 그리는 작업. 허니콤에서 처음 시작되었고 targetSdkVersion이 14 이상이면 디폴트 옵션임
+* 앱 위젯 기본 패딩`Padding` : 기존에는 셀의 사이즈를 가득 채웠으나 `targetSDKVersion`이 14 이상 부터는 앱 위젯에 기본 패딩이 존재한다. 
 
-  - 앱 위젯 기본 패딩 : targetSDKVersion이 14 이상일 때는 앱 위젯에 기본 패딩이 존재. 기존에는 셀의 사이즈를 가득 채움
+* 명시적 인텐트로 서비스 시작 : `targetSDKVersion`이 21 이상일 때는 `startService()`, `bindService()` 메서드를 실행할 때 명시적 인테트를 사용해야 한다. 암시적 인텐트를 사용하면 예외발생하게 된다. 20 이하이면 암시적 인텐트도 문제 없이 동작한다.
 
-  - 명시적 인텐트로 서비스 시작 : targetSDKVersion이 21 이상일 때는 startService(), bindService() 메서드를 실행할 때 명시적 인테트를 사용해야 함. 암시적 인텐트를 사용하면 예외발생. 20 이하이면 문제 없이 동작
+* compileSdkVersion은 컴파일 시에 어느 버전의 android.jar를 사용할지 정하는 것을 의미하고 `<sdk>/platforms/android-[버전]` compileSdkVersion은 디폴트 값이 없으므로 반드시 지정해야 한다.
 
-- compileSdkVersion은 컴파일 시에 어느 버전의 android.jar를 사용할지 정하는 것. ```<sdk>/platforms/android-[버전]``` compileSdkVersion은 디폴트 값이 없으므로 반드시 지정해야 함.
+* targetSdkVersion은 런타임 시에 비교해서 호환성 모드로 동작하기 위한 값이고, compileSdkVersion은 컴파일 시에 사용할 버전을 정하는 것이다. 규칙은 없으나 compileSdkVersion은 targetSdkVersion과 동일하거나 그 이상으로 정하는게 좋다.
 
-- targetSdkVersion은 런타임 시에 비교해서 호환성 모드로 동작하기 위한 값이고, compileSdkVersion은 컴파일 시에 사용할 버전을 정하는 것임. 규칙은 없으나 compileSdkVersion은 targetSdkVersion과 동일하거나 그 이상으로 정함
+* compileSdkVersion을 높은 버전으로 정하고 컴파일해서 만든 앱이, 낮은 버전의 단말에서 설치되어 동작될때 높은 버전에만 있는 클래스나 메서드가 호출될때 크래시가 발생되므로 버전을 체크하는 코드를 사용해야 한다.
 
-- compileSdkVersion을 높은 버전으로 정하고 컴파일해서 만든 앱이, 낮은 버전의 단말에서 설치되어 동작될때 높은 버전에만 있는 클래스나 메서드가 호출될때 크래시가 발생되므로 버전을 체크하는 코드를 사용하게 됨
+* 메서드 마다 Build.VERSION_SDK_INT를 확인해 분기하는 코드 보다는 support 패키지의 -Compat 클래스를 사용하는게 좋다. `ViewCompat, ActivityCompat, WindowCompat, NotifiationCompat, AsyncTaskCompat, SharedPreferencesCompat.EditorCompat...`
 
-- 메서드 마다 Build.VERSION_SDK_INT를 확인해 분기하는 코드 보다는 support 패키지의 -Compat 클래스를 사용하는게 좋음 ```ViewCompat, ActivityCompat, WindowCompat, NotifiationCompat, AsyncTaskCompat, SharedPreferencesCompat.EditorCompat...```
+  ```java
+  if (Build.VERSION.SDK_INT >= 9) {
+    listview.setOverScrollMode(View.OVER_SCROLL_NEVER);
+  }
 
-```java
-if (Build.VERSION.SDK_INT >= 9) {
-  listview.setOverScrollMode(View.OVER_SCROLL_NEVER);
-}
-```
+  // 위 코드는 ViewCompat을 쓰면 간단해지며 버전 분기코드를 작성하지 않아도 된다.
+  ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
+  ```
 
-> ViewCompat을 쓰면 간단해짐
-
-```java
-ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
-```
-
-- support-v4에 호환 메서드가 있으면 그것을 먼저 사용하고 없을때는 별도로 작성. 버전마다 동작이 달라지도록 코드를 작성할 때는 ViewCompat 클래스의 구조를 활용 ```if 문으로 버전을 체크하지 않고, 정적 초기화 블록에서 if 문으로 버전을 체크 후 사용할 클래스를 지정하는 방식```
+  support-v4에 호환 메서드가 있으면 그것을 먼저 사용하고 없을때만 별도로 작성한다. 버전마다 동작이 달라지도록 코드를 작성할 때는 ViewCompat 클래스의 구조를 활용하는게 좋다. `if 문으로 버전을 체크하지 않고, 정적 초기화 블록에서 if 문으로 버전을 체크 후 사용할 클래스를 지정하는 방식`
 
 ## 2. 메인 스레드와 Handler
 
@@ -97,66 +92,47 @@ ViewCompat.setOverScrollMode(listView, ViewCompat.OVER_SCROLL_NEVER);
 
 ## 4. Context
 
-- Context는 앱을 개발할때 어디서든 항상 만남. Context가 없으면 액티비티 시작, 브로드캐스트 발생, 서비스 시작, 리소스에 접근 할 수도 없음. Context는 여러 컴포넌트의 상위 클래스 이면서 Context를 통해 여러 컴포넌트가 연결되므로 Context를 자세히 살펴볼 필요가 있음
+컨텍스트`Context`는 앱을 개발할때 어디서든 항상 만나게 되는 객체이다. 컨텍스트가 없으면 액티비티 시작, 브로드캐스트 발생, 서비스 시작, 리소스에 접근 할 수도 없다. 컨텍스트는 여러 컴포넌트의 상위 클래스 이면서 컨텍스트를 통해 여러 컴포넌트가 연결되므로 컨텍스트에 대해 자세히 살펴볼 필요가 있다.
 
-- Context는 추상 클래스로 메서드 구현이 거의 없고 상수, 추상 메서드 정의로 이루어짐 (구현체는 ContextImpl)
+컨텍스트는 추상 클래스로 메서드 구현이 거의 없고 상수, 추상 메서드 정의로 이루어져 있다(구현체는 `ContextImpl`). 안드로이드 컴포너트 중 액티비티`Activity`, 서비스`Service`, 어플리케이션`Application`은 컨텍스트를 상속받은 컨텍스트 래퍼`ContextWrapper`를 상속 받는다. 브로드케스트 리시버`BroadcastReceiver`, 컨텐트 프로바이더`ContentProvider`는 컨텍스트를 상속받지 않는다. 컨텍스트 래퍼는 컨텍스트를 래핑한 클래스로 컨텍스트 래퍼가 가지고 있는 내부의 컨텍스트 실제 객체는 컨텍스트 추상 클래스의 여러 메서드를 구현한 `ContextImpl` 인스턴스이다. 즉 액티비티, 서비스, 어플리케이션 컴포넌트는 각각 전달받은 `ContextImpl`를 래핑하고 있고, `getBaseContext()`는 각각 `ContextImpl` 인스턴스를 리턴하고 `getApplicationContext()`는 어디서나 1개로 동일한 `ContextImpl`의 어플리케이션 컨텍스트를 리턴한다.
 
-- Activity, Service, Application -> ContextWrapper -> Context (BroadcastReceiver, ContentProvider는 Context를 상속받지 않음)
+`ContextImpl`의 메서드는 기능별로 헬퍼, 퍼미션, 시스템 서비스 접근 관련 3개의 그룹으로 나뉜다.
 
-- ContextWrapper는 Context를 래핑한 클래스로 실제 전달되는 것은 Context의 여러 메서드를 구현한 ContextImpl 인스턴스임
+* 헬퍼`Helper` : 앱 패키지 정보, 내/외부 파일, `SharedPreferences`, 데이터베이스 정보를 제공한다.
 
-- Activity, Service, Application 컴포넌트는 각각 생성한 ContextImpl를 하나씩 래핑하고 있고, getBaseContext()는 각각 ContextImpl 인스턴스를 리턴하고 getApplicationContext()는 1개 뿐인 어디서나 동일한 Application 인스턴스를 리턴함
+* 퍼미션`Permission` : 액티비티, 브로드케스트 리시버, 서비스 컴포넌트 시작 메서드, 퍼미션 체크 메서드를 제공한다. 이들 메서드는 `system_server` 프로세스의 액티비티 메니저 서비스`ActivityManagerService(시스템 서비스)` 메서드를 다시 호출한다.
 
-- ContextImpl의 메서드는 기능별로 헬퍼, 퍼미션, 시스템 서비스 접근 관련 3개의 그룹으로 나뉨
-
-  - 헬퍼 : 앱 패키지 정보, 내/외부 파일, SharedPreferences, 데이터베이스
-
-  - 퍼미션 : Activity, BroadcastReceiver, Service 컴포넌트 시작 메서드, 퍼미션 체크 메서드. 이들 메서드는 system_server 프로세스의 ActivityManagerService(시스템 서비스)의 메서드를 다시 호출함
-
-  - 시스템 서비스 접근 : ContextImpl의 정적 초기화 블록에서 클래스가 최초 로딩될 때 시스템 서비스를 매핑함. 후엔 Context 클래스에 XXX_SERVICE 상수 형태로 정의된 값을 전달 인자로 하여 getSystemService()를 호출하면 시스템 서비스를 가져다 쓸 수 있음 ```getSystemService(Context.ALARM_SERVICE)```
-
-  <!--
-  ```mermaid
-  classDiagram
-  Context <|-- ContextWrapper
-  Context <|-- ContextImpl
-  ContextWrapper <|-- Activity
-  ContextWrapper <|-- Service
-  ContextWrapper <|-- Application
-  ContextImpl <-- ContextWrapper
-  Context
-  ```
-  -->
+* 시스템 서비스 접근 : `ContextImpl`의 정적 초기화 블록에서 클래스가 최초 로딩될 때 시스템 서비스를 매핑한다. 후엔 컨텍스트 클래스에 `XXX_SERVICE` 상수 형태로 정의된 값을 전달 인자로 하여 `getSystemService(`)를 호출하면 시스템 서비스를 가져다 쓸 수 있다. `getSystemService(Context.ALARM_SERVICE)`
   
-  - Activity, Service, Application는 ContextImpl을 직접 상속하지 않고 ContextWrapper를 통한 구성형태로 ContextImpl 기능을 호출함. 이를 통해 ContextImpl의 변수가 노출되지 않고 ContextImpl의 공개 메서드만 호출하게 됨
+* 액티비티, 서비스, 어플리케이션은 `ContextImpl`을 직접 상속하지 않고 `ContextWrapper`를 통한 구성 형태로 `ContextImpl` 기능을 호출한다. 이를 통해 `ContextImpl`의 변수가 노출되지 않고 `ContextImpl`의 공개 메서드만 호출할 수 있게 된다.
 
-- 사용 가능한 Context 종류 (Activity 코드에서 Context를 쓰는 방법)
+사용 가능한 컨텍스트 종류(액티비티 코드에서 컨텍스트를 쓰는 방법)는 다음과 같다.
 
-  - Activity 인스턴스 자신(this)
+* 액티비티 인스턴스 자신 : 액티비티는 컨텍스트를 상속받은 `ContextWrapper`를 상속받으므로 자신`this`이 컨텍스트가 된다.
 
-  - getBaseContext()를 통해 가져오는 ContextImpl 인스턴스
+* `getBaseContext()` : 외부에서 전달받아 저장해놨던 `ContextImpl` 인스턴스도 사용 가능한 컨텍스트가 된다.
 
-  - getApplicationContext()를 통해 가져오는 Application 인스턴스 : Activity의 getApplication() 메서드로 가져오는 인스턴스와 같음
+* `getApplicationContext()` : 액티비티의 `getApplication()` 메서드로 가져온 어플리케이션 인스턴스와 같은데 어플리케이션 인스턴스도 `ContextWrapper`를 상속받았으므로 컨텍스트가 된다.
 
-  - 위 3개의 인스턴스가 모두 다르기 때문에 함수로 캐스팅 하면 안됨. ClassCastException 발생
+* 위 3개의 인스턴스가 모두 다른 객체`(this, mBase, Application)`로 잘못 캐스팅시 ClassCastException 발생하게 되므로 함부로 캐스팅 하면 안된다.   
 
-  > View의 Context는 어디서 온걸까?
+```java
+// View의 Context는 어디서 온걸까?
 
-  ```java
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.simple_text);
-    statusView = (TextView) findViewById(R.id.status);
-    Log.d(TAG, "1st=" + (statusView.getContext() == this)); // (1) true
-    Log.d(TAG, "2nd=" + (statusView.getContext() == getBaseContext())); // (2) false
-    Log.d(TAG, "3rd=" + (statusView.getContext() == getApplicationContext())); // (3) false
-    Log.d(TAG, "4th=" + (statusView.getContext() == getApplication())); // (4) false
-  }
-  ```
+@Override
+public void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.simple_text);
+  statusView = (TextView) findViewById(R.id.status);
+  Log.d(TAG, "1st=" + (statusView.getContext() == this)); // (1) true
+  Log.d(TAG, "2nd=" + (statusView.getContext() == getBaseContext())); // (2) false
+  Log.d(TAG, "3rd=" + (statusView.getContext() == getApplicationContext())); // (3) false
+  Log.d(TAG, "4th=" + (statusView.getContext() == getApplication())); // (4) false
+}
+
+// View 클래스는 생성자에 Context가 전달되어야 하는데 Activity에서 쓸 수 있는 3가지 Context 중 View와 연관이 깊은 Activity가 전달된 것을 알 수 있음
+```
   
-  - View 클래스는 생성자에 Context가 전달되어야 하는데 Activity에서 쓸 수 있는 3가지 Context 중 View와 연관이 깊은 Activity가 전달된 것을 알 수 있음
-
 ## 5. 액티비티
 
 - 앱에서 화면의 기본단위가 되고 가장 많이 쓰이는 컴포넌트임
