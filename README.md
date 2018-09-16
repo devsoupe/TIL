@@ -4,8 +4,6 @@
 
 ### Android
 
-  * [안드로이드 프로그래밍 Next Step](Book/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20Next%20Step/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20Next%20Step.md)
-
 ## Raywenderlich
 
 ### Android
@@ -24,7 +22,7 @@
 
   * [안드로이드 메모리 릭```Leak```](Cheatsheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak.md)
 
-<!--  -->
+<!-- * [안드로이드 프로그래밍 Next Step](Book/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20Next%20Step/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20Next%20Step.md) -->
 
 <!-- * [안드로이드 아키텍쳐 컴포넌트 시작하기 (Android Architecture Components - Getting Started)](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Android%20Architecture%20Components%20-%20Getting%20Started/Android%20Architecture%20Components%20-%20Getting%20Started.md)
 
