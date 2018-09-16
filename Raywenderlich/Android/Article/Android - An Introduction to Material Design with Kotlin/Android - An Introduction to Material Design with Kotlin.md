@@ -1,8 +1,10 @@
 # 안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)
 
-> 프로젝트에서 사용한 툴 및 라이브러리 버전`Version`은 다음과 같다.
+`https://www.raywenderlich.com/442-android-an-introduction-to-material-design-with-kotlin`
 
-`Android Studio 3.3 Canary7` `gradle-4.9-all.zip` `gradle:3.3.0-alpha07` `compileSdkVersion 27` `buildToolsVersion "28.0.2"` `minSdkVersion 21` `targetSdkVersion 27` `Kotlin 1.2.60` `SupportVersion 27.1.1`
+<!-- > Version `Kotlin 1.2.60`, `Android 5.0`, `Android Studio 3.3 Canaray7` -->
+
+<!-- `Android Studio 3.3 Canary7` `gradle-4.9-all.zip` `gradle:3.3.0-alpha07` `compileSdkVersion 27` `buildToolsVersion "28.0.2"` `minSdkVersion 21` `targetSdkVersion 27` `Kotlin 1.2.60` `SupportVersion 27.1.1` -->
 
 기존 앱에 머티리얼 디자인을 적용하는 방법과 새로운 애니메이션 API를 사용하여 멋진 인터랙션을 만드는 방법을 배우게 된다. 머티리얼 디자인은 촉각 표면, 대담한 그래픽 디자인 및 유동적인 모션을 결합한 아름답고 직관적인 경험을 만드는 인터페이스이고 안드로이드 앱을 위한 사용자 경험 철학이다. Travel Wishlist라는 앱에 머티리얼 디자인을 적용하면서 배우게 될 내용은 다음과 같다.
 
