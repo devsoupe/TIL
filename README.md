@@ -1,6 +1,8 @@
 # Today I Learned
 
-## Book
+(UNDER Construction)
+
+<!-- ## Book
 
 ## Raywenderlich
 
@@ -10,11 +12,11 @@
 
 ### Video Course
 
-## Cheatsheet
+## Cheatsheet -->
 
-#### `Android`
+<!-- #### `Android` -->
 
-* [안드로이드 인터뷰`Interview`](Cheatsheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%9D%B8%ED%84%B0%EB%B7%B0%20Interview/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%9D%B8%ED%84%B0%EB%B7%B0%20Interview.md)
+<!-- * [안드로이드 인터뷰`Interview`](Cheatsheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%9D%B8%ED%84%B0%EB%B7%B0%20Interview/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%9D%B8%ED%84%B0%EB%B7%B0%20Interview.md) -->
 
 <!-- * [안드로이드 메모리 릭`Leak`](Cheatsheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20Leak.md) -->
 
