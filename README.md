@@ -4,34 +4,42 @@
 
 ---
 
-## Book
+## <b>Book</b>
 
-### 한글서적
+### `한글서적`
 
-* `Android` [안드로이드 프로그래밍 Next Step](Book/한글서적/안드로이드%20프로그래밍%20Next%20Step/안드로이드%20프로그래밍%20Next%20Step.md)
-* `Android` [이것이 안드로이드다 (박성근의 안드로이드 앱 프로그래밍)](Book/한글서적/이것이%20안드로이드다%20(박성근의%20안드로이드%20앱%20프로그래밍)/이것이%20안드로이드다%20(박성근의%20안드로이드%20앱%20프로그래밍).md)
+* [안드로이드 프로그래밍 Next Step](Book/한글서적/안드로이드%20프로그래밍%20Next%20Step/안드로이드%20프로그래밍%20Next%20Step.md)
+* [이것이 안드로이드다 (박성근의 안드로이드 앱 프로그래밍)](Book/한글서적/이것이%20안드로이드다%20(박성근의%20안드로이드%20앱%20프로그래밍)/이것이%20안드로이드다%20(박성근의%20안드로이드%20앱%20프로그래밍).md)
 
-### Packt
+### `Packt`
 
-* `Android` [Building Android UIs with Custom Views (커스텀 뷰를 이용하여 안드로이드 UI 작성하기)](Book/Packt/Building%20Android%20UIs%20with%20Custom%20Views/Building%20Android%20UIs%20with%20Custom%20Views.md)
-
----
-
-## Raywenderlich
-
-### Article
-
-* `Android` [Android Custom View Tutorial (안드로이드 커스텀 뷰 강좌)](Raywenderlich/Article/Android%20Custom%20View%20Tutorial/Android%20Custom%20View%20Tutorial.md)
-
-### Screencast
-
-### Video Course
+* [Building Android UIs with Custom Views (커스텀 뷰를 이용하여 안드로이드 UI 작성하기)](Book/Packt/Building%20Android%20UIs%20with%20Custom%20Views/Building%20Android%20UIs%20with%20Custom%20Views.md)
 
 ---
 
-## YouTube
+## <b>Raywenderlich</b>
 
-* `Data Structure And Algorithm` [엔지니어대한민국](Youtube/엔지니어대한민국/엔지니어대한민국.md)
+### `Article`
+
+* [Android Custom View Tutorial (안드로이드 커스텀 뷰 강좌)](Raywenderlich/Article/Android%20Custom%20View%20Tutorial/Android%20Custom%20View%20Tutorial.md)
+
+### `Screencast`
+
+### `Video Course`
+
+---
+
+## <b>LeetCode</b>
+
+### `Problems`
+
+* [0001. Two Sum](LeetCode/Problems/0001_Two%20Sum.md)
+
+---
+
+## <b>YouTube</b>
+
+* [엔지니어대한민국 (Data Structure And Algorithm)](Youtube/엔지니어대한민국/엔지니어대한민국.md) 
 
 
 <!-- ## Book
