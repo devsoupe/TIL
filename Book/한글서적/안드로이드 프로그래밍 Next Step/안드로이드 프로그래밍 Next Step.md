@@ -127,6 +127,11 @@
 
 #### 9.2.1. ComponentCallback2 인터페이스
 
+* 구성이 변경되면 애플리케이션, 액티비티, 서비스, 컨텐트 프로바이더 순으로 onConfigurationChanged() 함수가 호출된다.
+* 애플리케이션의 onConfigutationChanged()가 가장 먼저 실행되므로, 구성 변경시 반드시 필요한 작업은 여기서 작업한다. 예로 캘린더 앱에서 언어 변경시 휴일 정보를 새로 업데이트 해야 된다면 애플리케이션의 onConfigurationChanged() 함수에서 startService()를 실행하여 서비스에서 API를 통해 휴일 정보를 업데이트 하면 된다.
+* 시스템 메모리가 부족해 백그라운드 프로세스가 강제 종료될때 onLowMemory() 함수가 호출된다.
+
+
 #### 9.2.2. Application에 등록하는 콜백
 
 ### 9.3. 프로세스 분리
