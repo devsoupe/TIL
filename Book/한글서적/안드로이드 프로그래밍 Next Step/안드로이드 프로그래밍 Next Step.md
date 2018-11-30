@@ -142,10 +142,17 @@ public Resources getResources() {
 }
 ```
 
-* 생성자와 attachBaseContext 함수에 전달하는 base는 Context의 여러 메서드를 직접 구현한  ContextImpl 인스턴스 이다.
-* ContextWrapper의 여러 메서드는 base의 메서드를 그대로 다시 호출한다.
+* 생성자와 attachBaseContext 함수에 전달하는 base는 Context의 여러 함수를 직접 구현한  ContextImpl 인스턴스 이다.
+* ContextWrapper의 여러 함수는 base의 함수를 그대로 다시 호출한다.
 * ContextImpl은 싱글턴이 아닌 Activity, Service, Application 컴포넌트별로 각각 생성한 ContextImpl을 하나씩 래핑하고 있다.
 * getApplicationContext() 함수는 Application 인스턴스를 리턴하는 것으로 Application은 앱에 1개 밖에 없고 어디서나 동일한 인스턴스를 반환한다.
+* ContextImple의 함수는 기능별로 헬퍼, 퍼미션, 시스템 서비스 접근 관련한 3개의 그룹으로 나뉜다.
+
+```txt
+* 헬퍼 : 앱 패키지 정보를 제공하거나 내/외부 파일, SharedPreferences, DB를 사용하기 위한 함수이다.
+* 퍼미션 : Activity, BoradcastReceiver, Service와 같은 컴포넌트를 시작하는 함수와 퍼미션을 체크하는 함수가 있다. 이들 함수는 system_server 프로세스의 ActivityManagerService의 함수를 다시 호출한다.
+* 시스템 서비스 접근 : ActivityManagerService를 포함한 시스템 서비스에 접근하는 함수로 getSystemService() 함수가 있다. 시스템 서비스는 Context 클래스에 XXX_SERVICE와 같이 상수명으로 모두 매핑되어 있고, Context가 전달된다면 어디서든지 getSystemService(Context.ALARM_SERVICE)와 같이 시스템 서비스를 가져다 쓸 수 있다.
+```
 
 ---
 
@@ -213,15 +220,15 @@ public Resources getResources() {
 <!--
  즉 Activity, Service, 켕이션 컴포넌트는 각각 전달받은 `ContextImpl`를 래핑하고 있고, `getBaseContext()`는 각각 `ContextImpl` 인스턴스를 리턴하고 `getApplicationContext()`는 어디서나 1개로 동일한 `ContextImpl`의 어플리케이션 Context를 리턴한다.
 
-`ContextImpl`의 메서드는 기능별로 헬퍼, 퍼미션, 시스템 Service 접근 관련 3개의 그룹으로 나뉜다.
+`ContextImpl`의 함수는 기능별로 헬퍼, 퍼미션, 시스템 Service 접근 관련 3개의 그룹으로 나뉜다.
 
 * 헬퍼`Helper` : 앱 패키지 정보, 내/외부 파일, `SharedPreferences`, 데이터베이스 정보를 제공한다.
 
-* 퍼미션`Permission` : Activity, 브로드케스트 리시버, Service 컴포넌트 시작 메서드, 퍼미션 체크 메서드를 제공한다. 이들 메서드는 `system_server` 프로세스의 Activity 메니저 Service`ActivityManagerService(시스템 Service)` 메서드를 다시 호출한다.
+* 퍼미션`Permission` : Activity, 브로드케스트 리시버, Service 컴포넌트 시작 함수, 퍼미션 체크 함수를 제공한다. 이들 함수는 `system_server` 프로세스의 Activity 메니저 Service`ActivityManagerService(시스템 Service)` 함수를 다시 호출한다.
 
 * 시스템 Service 접근 : `ContextImpl`의 정적 초기화 블록에서 클래스가 최초 로딩될 때 시스템 Service를 매핑한다. 후엔 Context 클래스에 `XXX_SERVICE` 상수 형태로 정의된 값을 전달 인자로 하여 `getSystemService(`)를 호출하면 시스템 Service를 가져다 쓸 수 있다. `getSystemService(Context.ALARM_SERVICE)`
   
-* Activity, Service, 어플리케이션은 `ContextImpl`을 직접 상속하지 않고 `ContextWrapper`를 통한 구성 형태로 `ContextImpl` 기능을 호출한다. 이를 통해 `ContextImpl`의 변수가 노출되지 않고 `ContextImpl`의 공개 메서드만 호출할 수 있게 된다.
+* Activity, Service, 어플리케이션은 `ContextImpl`을 직접 상속하지 않고 `ContextWrapper`를 통한 구성 형태로 `ContextImpl` 기능을 호출한다. 이를 통해 `ContextImpl`의 변수가 노출되지 않고 `ContextImpl`의 공개 함수만 호출할 수 있게 된다.
 
 사용 가능한 Context 종류(Activity 코드에서 Context를 쓰는 방법)는 다음과 같다.
 
