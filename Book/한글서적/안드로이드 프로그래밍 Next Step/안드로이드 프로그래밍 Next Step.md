@@ -154,6 +154,55 @@ public Resources getResources() {
 * 시스템 서비스 접근 : ActivityManagerService를 포함한 시스템 서비스에 접근하는 함수로 getSystemService() 함수가 있다. 시스템 서비스는 Context 클래스에 XXX_SERVICE와 같이 상수명으로 모두 매핑되어 있고, Context가 전달된다면 어디서든지 getSystemService(Context.ALARM_SERVICE)와 같이 시스템 서비스를 가져다 쓸 수 있다.
 ```
 
+```txt
+* Context 관련 클래스 다이어그램
+
++---------------+
+| <<abstract>>  |
+|   Context     |
++---------------+
+        △
+        |---------------------------------+
+        |                                 |
++----------------+                 +-------------+
+|                |                 |             |
+| ContextWrapper | --------------➤ | ContextImpl |  
+|                |                 |             |
++----------------+                 +-------------+  
+        △
+        |---------------+------------------+
+        |               |                  |
++------------+   +------------+    +---------------+
+|            |   |            |    |               |
+|  Activity  |   |  Service   |    |  Application  |  
+|            |   |            |    |               |
++------------+   +------------+    +---------------+
+
+* Activity, Service, Application은 ContextImpl를 직접상속하지 않고 구성을 이용하여 ContextImpl 함수를 호출하는 형태임을 알 수 있다.
+* ContextImpl 변수는 노출되지 않고 필요한 함수만 ContextWrapper롤 통해 공개하게 된다.
+```
+
+* 상황에 따라 사용가능한 Context는 여러개가 있을 수 있다. Activity로 예를 들자면 `1) Activity 인스턴스 자신(this), 2) getBaseContext()를 통해 가져오는 ContextImpl 인스턴스, 3) getApplicationContext()를 통해 가져오는 Application 인스턴스` 3가지 형태의 Context를 사용할 수 있다.
+* 3개의 인스턴스가 다르기 때문에 캐스팅을 함부로 하면 안 된다. getBaseContext()로 가져온 것을 Activity로 캐스팅하면 ClassCastException이 발생한다.
+* View 클래스를 보면 Context가 들어가는데 그 Context는 어디서 온 것일까?
+
+```java
+@Override
+public void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.simple_text);
+  statusView = (TextView) findViewById(R.id.status);
+
+  Log.d(TAG, "1st=" + (statusView.getContext() == this)); // (1)
+  Log.d(TAG, "2nd=" + (statusView.getContext() == getBaseContext())); // (2)
+  Log.d(TAG, "3rd=" + (statusView.getContext() == getApplicationContext())); // (3)
+  Log.d(TAG, "4th=" + (statusView.getContext() == getApplication())); // (4)
+}
+```
+
+* 1만 true가 나온다. View 클래스 생성자에 Context 전달되어야 하는데 3가지 Context가 모두 전달 가능하나 View와 연관이 깊은 Activity가 전달된 것으로 이해를 할 수 있다.
+* setContentView() 함수에서 사용하는 LayoutInflater에 Activity 인스턴스가 전달되고 View 생성자에도 동일하게 Activity 인스턴스가 전달된다.
+
 ---
 
 ## 5. 액티비티
