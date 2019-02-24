@@ -16,7 +16,15 @@
 
 ### `Packt`
 
-* [Building Android UIs with Custom Views (커스텀 뷰를 이용하여 안드로이드 UI 작성하기)](Book/Packt/Building%20Android%20UIs%20with%20Custom%20Views/Building%20Android%20UIs%20with%20Custom%20Views.md)
+* [Building Android UIs with Custom Views](Book/Packt/Building%20Android%20UIs%20with%20Custom%20Views/Building%20Android%20UIs%20with%20Custom%20Views.md)
+
+---
+
+## <b>Video</b>
+
+### `Packt`
+
+* [Kotlin - Tips, Tricks, and Techniques](Video/Packt/Kotlin%20-%20Tips,%20Tricks,%20and%20Techniques/Kotlin%20-%20Tips,%20Tricks,%20and%20Techniques.md)
 
 ---
 
@@ -24,7 +32,7 @@
 
 ### `Article`
 
-* [Android Custom View Tutorial (안드로이드 커스텀 뷰 강좌)](Raywenderlich/Article/Android%20Custom%20View%20Tutorial/Android%20Custom%20View%20Tutorial.md)
+<!-- * [Android Custom View Tutorial](Raywenderlich/Article/Android%20Custom%20View%20Tutorial/Android%20Custom%20View%20Tutorial.md) -->
 
 ### `Screencast`
 
@@ -44,18 +52,6 @@
 
 * [엔지니어대한민국 (Data Structure And Algorithm)](Youtube/엔지니어대한민국/엔지니어대한민국.md) 
 
-
-<!-- ## Book
-
-## Raywenderlich
-
-### Article
-
-### Screencast
-
-### Video Course
-
-## Cheatsheet -->
 
 <!-- * [안드로이드 인터뷰`Interview`](Cheatsheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%9D%B8%ED%84%B0%EB%B7%B0%20Interview/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%9D%B8%ED%84%B0%EB%B7%B0%20Interview.md) -->
 
