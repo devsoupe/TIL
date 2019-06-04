@@ -11,13 +11,13 @@
 * [안드로이드 프로그래밍 Next Step](Book/한글서적/안드로이드%20프로그래밍%20Next%20Step/안드로이드%20프로그래밍%20Next%20Step.md)
 * [이것이 안드로이드다 (박성근의 안드로이드 앱 프로그래밍)](Book/한글서적/이것이%20안드로이드다%20(박성근의%20안드로이드%20앱%20프로그래밍)/이것이%20안드로이드다%20(박성근의%20안드로이드%20앱%20프로그래밍).md)
 * [코딩 인터뷰 완전 분석](Book/한글서적/코딩%20인터뷰%20완전%20분석/코딩%20인터뷰%20완전%20분석.md)
-* [가장 빨리 만나는 코어 자바 9](Book/한글서적/가장%20빨리%20만나는%20코어%20자바%209/가장%20빨리%20만나는%20코어%20자바%209.md)
-* [누구나 자료 구조와 알고리즘](Book/한글서적/누구나%20자료%20구조와%20알고리즘/누구나%20자료%20구조와%20알고리즘.md)
-* [스케치 무작정 따라하기](Book/한글서적/스케치%20무작정%20따라하기/스케치%20무작정%20따라하기.md)
+<!-- * [가장 빨리 만나는 코어 자바 9](Book/한글서적/가장%20빨리%20만나는%20코어%20자바%209/가장%20빨리%20만나는%20코어%20자바%209.md) -->
+<!-- * [누구나 자료 구조와 알고리즘](Book/한글서적/누구나%20자료%20구조와%20알고리즘/누구나%20자료%20구조와%20알고리즘.md) -->
+<!-- * [스케치 무작정 따라하기](Book/한글서적/스케치%20무작정%20따라하기/스케치%20무작정%20따라하기.md) -->
 
 ### `Packt`
 
-* [Building Android UIs with Custom Views](Book/Packt/Building%20Android%20UIs%20with%20Custom%20Views/Building%20Android%20UIs%20with%20Custom%20Views.md)
+<!-- * [Building Android UIs with Custom Views](Book/Packt/Building%20Android%20UIs%20with%20Custom%20Views/Building%20Android%20UIs%20with%20Custom%20Views.md) -->
 
 ---
 
@@ -25,7 +25,7 @@
 
 ### `Packt`
 
-* [Kotlin - Tips, Tricks, and Techniques](Video/Packt/Kotlin%20-%20Tips,%20Tricks,%20and%20Techniques/Kotlin%20-%20Tips,%20Tricks,%20and%20Techniques.md)
+<!-- * [Kotlin - Tips, Tricks, and Techniques](Video/Packt/Kotlin%20-%20Tips,%20Tricks,%20and%20Techniques/Kotlin%20-%20Tips,%20Tricks,%20and%20Techniques.md) -->
 
 ---
 
@@ -41,17 +41,17 @@
 
 ---
 
-## <b>LeetCode</b>
+<!-- ## <b>LeetCode</b>
 
 ### `Problems`
 
 * [0001. Two Sum](LeetCode/Problems/0001_Two%20Sum.md)
 
----
+--- -->
 
-## <b>YouTube</b>
+<!-- ## <b>YouTube</b>
 
-* [엔지니어대한민국 (Data Structure And Algorithm)](Youtube/엔지니어대한민국/엔지니어대한민국.md) 
+* [엔지니어대한민국 (Data Structure And Algorithm)](Youtube/엔지니어대한민국/엔지니어대한민국.md)  -->
 
 
 <!-- * [안드로이드 인터뷰`Interview`](Cheatsheet/Android/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%9D%B8%ED%84%B0%EB%B7%B0%20Interview/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%9D%B8%ED%84%B0%EB%B7%B0%20Interview.md) -->
