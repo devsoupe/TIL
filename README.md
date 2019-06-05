@@ -27,6 +27,10 @@
 
 <!-- * [Kotlin - Tips, Tricks, and Techniques](Video/Packt/Kotlin%20-%20Tips,%20Tricks,%20and%20Techniques/Kotlin%20-%20Tips,%20Tricks,%20and%20Techniques.md) -->
 
+### `Inflearn`
+
+* [IntelliJ를 시작하시는 분들을 위한 IntelliJ 가이드](Video/Inflearn/IntelliJ를%20시작하시는%20분들을%20위한%20IntelliJ%20가이드/IntelliJ를%20시작하시는%20분들을%20위한%20IntelliJ%20가이드.md)
+
 ---
 
 ## <b>Raywenderlich</b>
