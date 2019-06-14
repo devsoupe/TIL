@@ -1,6 +1,6 @@
 # IntelliJ를 시작하시는 분들을 위한 IntelliJ 가이드
 
-https://www.inflearn.com/course/intellij-guide
+https://www.inflearn.com/course/intellij-guide#
 
 다음의 내용은 `IntelliJ를 시작하시는 분들을 위한 IntelliJ 가이드`를 보고 주관적으로 간략하게 정리한 내용입니다. 제대로된 학습을 원하신다면 강의 수강을 권장해 드립니다.
 
