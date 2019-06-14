@@ -40,7 +40,7 @@
 <!-- * [Android Custom View Tutorial](Raywenderlich/Article/Android%20Custom%20View%20Tutorial/Android%20Custom%20View%20Tutorial.md) -->
 
 
-* [안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)](Raywenderlich/Android/Article/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin.md)
+* [안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)](Raywenderlich/Article/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin.md)
 
 ### `Screencast`
 
