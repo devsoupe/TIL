@@ -165,6 +165,41 @@ System.out.println() : sout
 
 ### 포커스 에디터
 
+#### 1. 단어별 이동 (⌥←/→)
+
+```txt
+맥 : Option + ←/→
+윈도우, 리눅스 : Ctrl + ←/→
+```
+
+#### 2. 단어별 선택 (⌥⇧←/→)
+
+```txt
+맥 : Option + Shift + ←/→
+윈도우, 리눅스 : Shift + Ctrl + ←/→
+```
+
+#### 3. 라인 첫/끝 이동 (Fn←/→, ⌘←/→)
+
+```txt
+맥 : Func + ←/→, Command + ←/→
+윈도우, 리눅스 : Home, End
+```
+
+#### 4. 라인 전체 선택 (Fn⇧←/→, ⌘⇧←/→)
+
+```txt
+맥 : Func + Shift + ←/→, Command + Shift + ←/→
+윈도우, 리눅스 : Shift + Home/End
+```
+
+#### 5. Page Up/Down (Fn↑/↓)
+
+```txt
+맥 : Func + ↑/↓
+윈도우, 리눅스 : Page Up/Down
+```
+
 ### 포커스 특수키
 
 ---
