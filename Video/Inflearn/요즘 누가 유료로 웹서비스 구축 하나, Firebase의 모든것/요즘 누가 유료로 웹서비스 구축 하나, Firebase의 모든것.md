@@ -10,6 +10,12 @@ https://www.inflearn.com/course/firebase-server#
 
 ### 강의 소개
 
+* Firebase를 이용해서 웹 호스팅, 데이터베이스 관리, 스토리지 관리, 서버사이드 작업을 한번에 어떻게 할 수 있는지 알려준다.
+* 리눅스 서버 구입, 웹 호스팅 의뢰 등 직접 해야했던 많은 부분을 Firebase 을 사용해 편리하게 사용할 수 있다.
+* 우리나라는 웹 프론트, 백엔드, DB 개발에 대한 롤이 명확해서 기존 방식을 고수하다보니 Firebase를 잘 모르는 측면이 있다.
+* Firebase에 기반한 웹 서비스, Hosting, Auth(로그인), Real Time Database, Storage, 서버사이드 작업을 할 수 있는 Cloud Function, 웹 서비스를 운영하기 위한 기타 Library를 소개한다.
+* 개발환경은 Mac, Chrome, VisualStudio Code, npm으로 구성한다.
+
 ### 웹서비스에 대한 이해
 
 ### AWS / IDC / Cloud 비교 이해
