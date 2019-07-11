@@ -58,7 +58,7 @@ https://www.inflearn.com/course/intellij-guide#
 System.out.println() : sout
 ```
 
-#### 3. 실행환경 실행 1 (⌃⇧R) 
+#### 3. 실행환경 실행 1 (⌃⇧R)
 
 * 현재 포커스
 
@@ -101,7 +101,7 @@ System.out.println() : sout
 윈도우, 리눅스 : 맥과 동일
 ```
 
-#### 4. 라인 단위로 옮기기 1 (⌥⇧↑/↓)
+#### 4. 라인 단위로 옮기기 1 (⌥⇧↑/↓, ⌘⇧↑/↓)
 
 * 구문에 관계 없이 이동됨
 
@@ -117,7 +117,7 @@ System.out.println() : sout
 윈도우, 리눅스 :
 ```
 
-#### 5. Element 단위로 옮기기 (⌥⇧⌘←/→) 
+#### 5. Element 단위로 옮기기 (⌥⇧⌘←/→)
 
 * HTML, XML에서 Element끼리 좌우로 바꿀때 사용한다
 
