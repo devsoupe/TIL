@@ -18,6 +18,8 @@ https://www.inflearn.com/course/firebase-server#
 
 ### 웹서비스에 대한 이해
 
+* 웹플랫폼, 웹앱
+
 ### AWS / IDC / Cloud 비교 이해
 
 ---
