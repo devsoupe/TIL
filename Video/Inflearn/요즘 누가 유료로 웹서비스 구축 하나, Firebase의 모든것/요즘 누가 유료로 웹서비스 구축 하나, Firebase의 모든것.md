@@ -18,9 +18,25 @@ https://www.inflearn.com/course/firebase-server#
 
 ### 웹서비스에 대한 이해
 
-* 웹플랫폼, 웹앱
+* 웹플랫폼은 제공되는 URL이 있고 크롬, 익스플로러, 파이어폭스 같은 다양한 디바이스 브라우저를 통해 접근가능하게 만든 어플리케이션이다.
+* 웹앱은 앱처럼 느껴지지만 위 웹플랫폼을 감싸고 있는 앱이라고 볼 수 있다.
+* 웹서비스는 HTML에서 스타일리쉬한 모습을 표현하기 위해 CSS 스타일 언어 추가되고 동적인 반응을 표현하기위해 JavaScript가 생겨나 HTML을 제어하게 된다.
+* 최근 Angular, React, Vue 등등 새로운 프레임워크가 생겨나서 프론트엔드를 표현하지만 그 끝을 따라가보면 결국엔 JavaScript로 변환되어 표현되어진다.
+* 웹에서의 JavaScript는 일반 어플리케이션의 C언어 같은 위치를 차지하고 있다.
+* 데이터 관리가 없는 웹은 HTML 그 이상도 그 이하도 아니다.
+* 데이터 관리를 위해 DB 서버에 접근해야 되는데 웹에서 DB 서버에 접근할 수 있는 구조가 아니기 때문에 중간다리 역할이 필요하게 되어 서버(BackEnd) 개념이 도입되게 된다.
+* 서버는 Java 혹은 Node.js로 만들어지게 되고 웹과도 통신을 해야 하므로 Tomcat 어플리케이션이 구동되어 진다.
+* 일련의 라이프 사이클이 만들어지게 되고 [웹 프론트] <-- ajax/axios 통신 --> [어플리케이션 서버] <-- DB라이브러리 --> [DB 서버]와 같은 웹 서비스 구조가 만들어지게 된다.
 
-### AWS / IDC / Cloud 비교 이해
+### AWS / IDC / Cloud(Firebase) 비교 이해
+
+* 초기 스타트업 서비스에서는 굳이 AWS를 구축할 필요가 없다고 생각한다.
+* IDC는 Internet Data Center로 물리적인 Application, Database, Storage Machine를 제공해준다. 
+* IDC를 사용하게 되면 직접 콘솔로 접근하여 관리, 배포를 해줘야 하므로 관리 포인트가 많다.
+* AWS는 Amazon Web Services로 IDC와 비슷하지만 각각의 Machine을 논리적인 플러그인 방식으로 제공하므로 필요에 따라 쉽게 추가하거나 빼거나하는게 가능한 서비스이다.
+* AWS도 필요한 부분에 대해 직접 관리가 필요하지만 콘솔이 아닌 웹 페이지에서 쉽게 관리를 할 수 있다.
+* Cloud Firebase는 선택의 권한이 없고 이미 Google이 Application, Database, Storage Machine들을 세팅해 놓은 상태이다.
+* Cloud Firebase는 관리도 직접 Google이 하게 되고 배포만 관리하면 된다.
 
 ---
 
