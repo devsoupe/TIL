@@ -44,6 +44,41 @@ https://www.inflearn.com/course/firebase-server#
 
 ### Hosting #1 : Hosting 이해 및 custom 도메인 연결
 
+* 사이트를 호스팅 하기 위해서는 npm install -g firebase-tools 명령으로 Firebase CLI 툴을 설치해야 한다.
+* 배포를 하기 위해서는 firebase login -> firebase init -> firebase deploy를 해야한다.
+
+#### 1. firebase-tools 설치과정
+
+```txt
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ brew install node
+$ brew link node
+
+버전확인
+
+$ node -v
+$ npm -v
+
+cli 설치
+
+$ mkdir firebase-tests
+$ cd firebase-test
+$ npm install -g firebase-tools
+```
+
+#### 2. deply 과정
+
+```txt
+$ firebase login (브라우저에서 로그인)
+$ firebase init 
+- Hosting: Configure and deploy Firebase Hosting sites (Hosting으로 이동 후 Space로 선택 후 Enter)
+- 프로젝트 이름인 firebase-test으로 이동 후 Enter
+- What do you want to use as your public directory? (그냥 Enter)
+- Configure as a single-page app (rewrite all urls to /index.html)? (그냥 Enter)
+$ cd public (templated.co 사이트에서 정적인 페이지를 다운받아 public 폴더안에 복사)
+$ firebase deploy (명령 후 firebase 콘솔에서 배포됨을 확인)
+```
+
 ---
 
 ## Firebase Auth
