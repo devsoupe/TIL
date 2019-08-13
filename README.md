@@ -84,3 +84,7 @@
 <!-- * [안드로이드 아키텍쳐 컴포넌트 시작하기 (Android Architecture Components - Getting Started)](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Android%20Architecture%20Components%20-%20Getting%20Started/Android%20Architecture%20Components%20-%20Getting%20Started.md)
 
 * [안드로이드 Jetpack 소개 (Introduction to Android Jetpack)](https://github.com/PerelandraX/TIL/blob/master/Raywenderlich/Android/Article/Introduction%20to%20Android%20Jetpack/Introduction%20to%20Android%20Jetpack.md) -->
+
+## <b>Cheatsheet</b>
+
+* [Learn Intellij IDEA](Cheatsheet/Learn%20Intellij%20IDEA/Learn%20Intellij%20IDEA.md)

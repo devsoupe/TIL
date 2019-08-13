@@ -79,11 +79,121 @@ $ cd public (templated.co 사이트에서 정적인 페이지를 다운받아 pu
 $ firebase deploy (명령 후 firebase 콘솔에서 배포됨을 확인)
 ```
 
+* 위 과정을 통해 기본적이 정적인 페이지 Hosting을 완료했다. 
+
 ---
 
 ## Firebase Auth
 
 ### Auth #1 : 회원가입 (로그인)
+
+* Firebase는 인증기능을 제공해준다.
+* 인증에는 이메일, 전화, 소셜등 여러가지 방법을 가지고 있다.
+* 인증 기능을 사용할때 주의할점은 사용할 도메인을 승인된 도메인에 추가시켜줘야 한다.
+* 기능을 사용하기 위해 [문서]( https://firebase.google.com/docs/web/setup?authuser=0#config-web-app)를 참고하여 몇가지 설정을 해줘야 한다.
+
+#### 1. 필요한 기능 스크립트 추가
+
+> index.html
+ 
+```html
+<body>
+  ...
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"></script>
+  ...
+<html>
+```
+
+#### 2. Firebase 앱 등록 및 초기화
+
+```txt
+1. Firebase 콘솔로 이동
+2. 왼쪽 상단 Project Overview 옆 아이콘을 누르고 프로젝트 설정을 누름
+3. 일반 탭에서 내 앱을 웹앱으로 등록하고 '연결된 Firebase 호스팅 사이트'는 이미 만든 호스팅을 선택함
+```
+
+> auth.js
+
+```js
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCM4k3cT6jMLjlApFKdq0UghBN6g6eX-nY",
+  authDomain: "fir-tests-6f8f8.firebaseapp.com",
+  databaseURL: "https://fir-tests-6f8f8.firebaseio.com",
+  projectId: "fir-tests-6f8f8",
+  storageBucket: "",
+  messagingSenderId: "1098700087057",
+  appId: "1:1098700087057:web:eecfc8555c7dc0d7"
+};
+```
+
+#### 3. auth 테스트
+
+```txt
+1. auth.js 파일에 아래 내용 추가함
+2. index.html에 auth.js 추가함
+3. 로컬에서 index.html을 실행해보면 Firebase가 정상적으로 initialize 되나 제대로된 로그인이 되지 않아 콘솔에 err no yet이 출력됨
+```
+
+> auth.js
+
+```js
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCM4k3cT6jMLjlApFKdq0UghBN6g6eX-nY",
+  authDomain: "fir-tests-6f8f8.firebaseapp.com",
+  databaseURL: "https://fir-tests-6f8f8.firebaseio.com",
+  projectId: "fir-tests-6f8f8",
+  storageBucket: "",
+  messagingSenderId: "1098700087057",
+  appId: "1:1098700087057:web:eecfc8555c7dc0d7"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+$(document).ready(function ($) {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      console.log('log', user);
+    } else {
+      console.log('err', 'not yet')
+    }
+  });
+});
+```
+
+> index.html
+
+```html
+<body>
+  ...
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"></script>
+
+  <script src="assets/js/auth.js"></script>
+  ...
+<html>
+```
+
+#### 4. 정상적인 log 유저정보 출력
 
 ### Auth #2 : 회원가입 (신규가입)
 
