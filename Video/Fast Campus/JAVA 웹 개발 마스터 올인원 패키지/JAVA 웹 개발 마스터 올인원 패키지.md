@@ -68,4 +68,45 @@ https://www.fastcampus.co.kr/dev_online_jvweb/
 * 인간의 욕심은 끝이 없기에 '요구사항 변경은 반복된다는 사실'을 기억해야 한다.
 * 요구사항이 바뀌는 것은 서비스를 향상시키려는 의도가 있으므로 좋은 것으로 받아들이고 변경을 적용하기 위해 계획을 잘 세워야 한다.
 
+### 03. 어떻게 만들 것인가?
 
+* 도메인 모델 - 우리가 해결하려는 각 문제에서 쓰이는 개념들을 정리하고 거기에 필요한 것들을 알아본다.
+
+```txt
+1. Restaurant (가게)
+2. Menu Item (메뉴)
+3. User (사용자)
+4. Favorite (즐겨찾기)
+5. Review (리뷰)
+6. Reservation (예약)
+```
+
+* 시스템 아키텍처 - 우리가 제공하는 서비스는 프로그램으로만 이루어져있지 않고 소프트웨어를 구동할 인프라 하드웨어도 포함한다.
+* 시스템 아키텍처를 올바르게 하기 위해서는 제약조건이 필요하다.
+
+```txt
+1. 서비스는 홈페이지를 통해 제공한다. (Web - Html, CSS)
+2. 모바일 환경에서도 서비스를 제공한다.
+3. 서로 다른 부분을 Front-end로 공통인 부분을 Back-end로 분리한다.
+```
+
+* 시스템 아키텍처에는 여러개의 계층으로 나눠서 구성하는 Multi-tier Architecture라는 방법이 있다.
+* 가장 흔하게 쓰이는 방법은 3-tier Architecture이다. <p>
+  | 이름 | 내용 | 용어 | 기술 | 
+  |:--------|:--------|:--------|:--------|
+  | Presentation | 사용자와 소통하는 부분 | Front-end | HTML/CSS/JS |
+  | Business | 사용자가 요청했거나, 지금 해야할 일들을 처리하는 부분 | Back-end | REST API |
+  | Data Source | 처리한 결과가 저장되는 부분 | Database | DBMS |
+* 이번 강의에서는 Back-end에 집중한다.
+* Bussiness에 대해 좀더 알아보면 이 계층에는 Layered Architecture가 사용된다. <p>
+  | Layered Architecture |
+  |:--------|
+  | UI Layer |
+  | Application Layer |
+  | Domain Layer |
+  | Infrastructure Layer |
+  * 각 레이어는 바로 아래, 혹은 그 보다 아래있는 레이어에 의존한다.
+  * 아래 있는 레이어는 위에 있는 레이어를 쓸 수 없다.
+  * UI 레이어는 Application, Domain, Infrastructure 레이어를 사용하지만 Domain 레이어는 UI 레이어를 사용하지 않는다.
+  * 이런 상관관계는 프로그램의 복잡도를 낮추기 위함이다. <p>
+* 기술은 Java, Spring Boot, REST API를 사용한다.
