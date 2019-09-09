@@ -110,3 +110,39 @@ https://www.fastcampus.co.kr/dev_online_jvweb/
   * UI 레이어는 Application, Domain, Infrastructure 레이어를 사용하지만 Domain 레이어는 UI 레이어를 사용하지 않는다.
   * 이런 상관관계는 프로그램의 복잡도를 낮추기 위함이다. <p>
 * 기술은 Java, Spring Boot, REST API를 사용한다.
+
+### 04. Hello world
+
+* [Spring Initializr](https://start.spring.io/) 사이트에서 간단한 정보만 입력하면 스프링 프로젝트를 시작할 수 있다.
+* 선택한 정보는 다음과 같다.
+
+```txt
+Project - Gradle Project
+Language - Java
+Spring Boot - 2.1.8
+
+Project Metadata
+  Group - com.perelandrax
+  Artifact - eatgo
+  Options
+    Name - eatgo
+    Description - Eat Go Project
+    Package Name - com.perelandrax.eatgo
+    Packaging - Jar
+    Java - 8
+
+Dependencies 
+  Spring Web
+  Spring Boot DevTools
+  Lombok    
+```
+
+* HELP.md를 README.md로 변경한다.
+* Spring Initializr로 만든 프로젝트는 단일 모듈 프로젝트로 생성되나 멀티 모듈 프로젝트로 변경하여 사용하도록 한다.
+* localhost:8080으로 접속시 Hello, world가 출력되도록 한다.
+
+```txt
+1. Layered Architecture에서 Presentation Layer를 추가하기 위해 interfaces 패키지를 추가한다.
+2. WelcomeController를 추하하고 hello()함수를 추가해 GetMapping으로 URL("/")를 연결한다.
+3. DevTools는 컴파일만 다시하게 되면 브라우저에 반영되도록 HotReload를 지원한다.
+```
