@@ -178,3 +178,103 @@ TDD의 목표를 어떻게 달성해야 할까?
 2. domain 패키지 안에 Restaurant 클래스 생성
 3. RestaurantTests 테스트 클래스 생성 (JUnit4)
 ```
+
+### 06. REST API
+
+* 다양한 환경을 지원하려면 어떻게 해야 할까?
+* 서로 다른 Front-end를 통해 다양한 환경을 지원하고 대시 공통으로 사용하는 부분은 하나의 Back-end로 제공한다.
+* Back-end는 어떻게 만들어야 하나? 이때 바로 REST API를 사용하게 된다.
+* REST(REpresentational State Transfer) 표현상태를 전달하는 것을 의미하고 다르게 이야기하면 Resource를 처리함을 뜻한다.
+* Resource를 처리하는 방법은 CRUD로 Resource를 Create, Read, Update, Delete하는 것을 의미하고 HTTP의 POST, GET, PUT/PATCH, DELETE와 대응된다.
+* Resource를 지정할때 URI(Uniform Resource Identifier) 식별자를 사용하고 또는 URL(Uniform Resource Locator) 지시자를 사용하기도 한다.
+* Resource는 크게 Collection, Member 두가지로 구분할 수 있고 Collection은 Read(List), Create를 할 수 있고 Memeber에 대해서는 Read(Detail), Update, Delete를 할 수 있다.
+* Restaurant 사례로 Collection, Memeber에 대해 알아보도록 한다.
+* Restaurant의 Collection은 http://host/restaurants 이와 같이 표현할 수 있다.
+* Restaurant의 개별적인 Resource Member에 대해서는 http://host/restaurants/1 이렇게 표현한다.
+* Resource에 대해 정보를 받거나 넘길때 JSON(JavaScript Object Notation) 포멧을 사용한다.
+
+```txt
+개별표현 (Member Resource)
+
+{
+  "id":2019,
+  "name":"식당",
+  "address":"골목"
+}
+
+목록표현 (Collection Resource)
+
+[
+  {
+    "id":2001,
+    "name":"오디세이",
+    "address":"우주"
+  },
+  {
+    "id":2019,
+    "name":"식당",
+    "address":"골목"
+  }
+]
+```
+
+* eatgo-api 프로젝트에서 제공할 API를 REST API에 맞춰 표현해보도록 한다.
+
+  |  | 내용 |
+  |:--------|:--------|
+  | 가게 목록 | GET /restaurants |
+  | 가게 상세 | GET /restaurants/{id} |
+  | 가게 추가 | POST /restaurants |
+  | 가게 수정 | PATCH(PUT) /restaurants/{id} | 
+  | 가게 삭제 | DELETE /restaurants/{id} | 
+
+### 07. 가게 목록
+
+* 가게 목록을 만들어 보도록 한다.
+* GET /restaurants에 대한 응답을 만들어 주면 된다.
+
+```txt
+결과 JSON
+
+[
+  {
+    "id":2001,
+    "name":"오디세이",
+    "address":"우주"
+  },
+  {
+    "id":2019,
+    "name":"식당",
+    "address":"골목"
+  }
+]
+
+실제로는 Image URL등과 같은 추가 정보가 많이 필요하지만 이 시점에는 간단히 구현하도록 한다.
+```
+
+
+* GET /restaurants에 대한 처리를 할 수 있는 RestaurantController를 만들도록 한다.
+* RestaurantControllerTest를 만들고 /restaurants 요청에 대해 기본적인 응답이 Ok인 상황을 구현한다.
+* id, name, address 응답에 대한 테스트를 확인한다.
+* 요청 결과가 객체에 정의된 변수명:값 JSON 형태로 나오는지 브라우저에서 확인한다.
+
+ ### 08. 가게 상세
+
+* 가게 상세를 만들어 보도록 한다.
+* GET /restaurants/{id}에 대한 응답을 만들어 주면 된다.
+
+```txt
+결과 JSON
+
+{
+  "id":2019,
+  "name":"식당",
+  "address":"골목"
+}
+```
+
+* GetMapping에 가변적인 값은 {name}과 같이 선언해준다.
+* 가변 값이 들어오는 부분은 함수의 파라미터 이고 PathVariable("name") 형 변수이름 형태로 사용한다.
+* 목록, 상세에서도 리스트를 사용하게 되는데 이는 중복 코드이고 중복 코드를 없애는 리펙토링을 통해 Repository 형태로 처리하도록 한다.
+
+### 09. 가게 상세 - 2
