@@ -305,7 +305,28 @@ RestaurantController에서 생성된 RestaurantRepository 객체를 맴버변수
 * 의존성 주입의 장점은 객체를 원하는 상태로 다양하게 변경해서 주입가능하다는 것이다.
 * 의존성 주입은 강하게 연결되어 있는 객체의 관계를 좀더 느슨하게 변경할 수 있다.
 
+### 11. 레이어 분리 - 1
 
+* 서두에 Layered Architecture에 대해 간단히 이야기를 하고 UI Layer와 Domain Layer를 사용했다.
+* UI Layer에는 interfaces 패키지를 지정하여 *Controller를 배치했고 Domain Layer에는 domain 패키지를 지정하여 Repository와 Model을 배치했다.
+* 서두에 Layered Architecture를 이야기 할때 UI Layer와 Domain Layer 사이에 한개의 계층이 더 있었고 그것은 바로 Application Layer였다.
+* 지금까지 해온 작업에 Application Layer를 application 패키지를 추가하여 적용해보도록 한다.
+* Application Layer의 필요성에 대해 인지하기 위해 Menu Item 모델을 추가하여 작업하도록 한다.
+* Menu Item이 들어옴으로 인해 기존의 단순했던 로직이 복잡해지고 이 복잡해짐을 해소하기 위해 Application Layer를 추가하는 것이다.
+* Application Layer에는 *Service 형태로 구현되며 추가된 복잡한 로직을 처리하게 될 것이다.
 
+### 12. 레이어 분리 - 2
 
+* RestaurantRestControllerTest는 스프링 테스트라 @Autowired 어노테이션을 사용해서 객체를 주입 받을 수 있었으나 RestaurantService는 일반 테스트 이므로  필요한 *Repository 주입을 직접 해주어야 한다.
 
+### 13. 가짜객체
+
+* 컨트롤러 테스트를 만들면서 테스트하고자 하는 객체 이외에 필요한 여러 객체를 주입한 것을 알 수 있다.
+* 이와 같이 테스트하고자 하는 객체 이외의 객체가 많을수록 테스트에 집중하기가 어렵다.
+* 또한 하나의 테스트를 통과시키기위해 의존하는 모든 객체를 만들어줘야만 했는데 이를 대신하기 위해 똑같은 행동을 하는 가짜객체(Mock Object)를 사용한다.
+* 스프링은 Mock Object를 만들기 위해 Mockito라는 프레임워크를 사용하므로 특별한 설정없이 각짜객체를 만들어 사용할 수 있다.
+* 지금까지 만든 테스트는 Spring Test와 그냥 Java Test를 사용하는 두가지 방법을 사용했고 Spring Test는 Ioc를 사용하기 위해 스프링관련 설정로드가 필요하므로 상대적으로 느리게 동작되었다.
+* 스프링은 기본적으로 POJO(Plain Old Java Object) 전통적인 자바 오브젝트를 사용하는것을 지향하기에 Mockito같은 가짜객체를 지원하는 것이다.
+* *ControllerTest를 사용할때 이미 MockMvc라는 Mock Obejct를 사용했었고 나머지 *Repository, *Service등도 Mock Object를 이용해 간단히 사용할 수 있다.
+* *Service를 @MockBean이라는 어노테이션을 통해 가짜객체를 전달하게 되면 테스트는 실패하기긴 하지만 기존에 나왔던 에러와는 다른 에러가 나오고 가짜객체가 그에 상응하는 응답을 전달하도록 변경하면 테스트가 통과되는 것을 알 수 있다.
+* 가짜객체는 내가 테스트하려는 객체외에 다른 객체를 모두 통제를 할 수 있기 때문에 원하는 테스트에 집중할 수 있다.
