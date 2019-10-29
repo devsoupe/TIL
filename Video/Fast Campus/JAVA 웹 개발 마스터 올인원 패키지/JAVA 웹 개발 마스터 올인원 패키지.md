@@ -330,3 +330,11 @@ RestaurantController에서 생성된 RestaurantRepository 객체를 맴버변수
 * *ControllerTest를 사용할때 이미 MockMvc라는 Mock Obejct를 사용했었고 나머지 *Repository, *Service등도 Mock Object를 이용해 간단히 사용할 수 있다.
 * *Service를 @MockBean이라는 어노테이션을 통해 가짜객체를 전달하게 되면 테스트는 실패하기긴 하지만 기존에 나왔던 에러와는 다른 에러가 나오고 가짜객체가 그에 상응하는 응답을 전달하도록 변경하면 테스트가 통과되는 것을 알 수 있다.
 * 가짜객체는 내가 테스트하려는 객체외에 다른 객체를 모두 통제를 할 수 있기 때문에 원하는 테스트에 집중할 수 있다.
+
+### 14. 가게 추가 - 1
+
+* 가게 추가 API를 만들어 보도록 한다.
+* POST /restaurants 에 생성을 시도한다.
+* 응답은 HTTP status 201 (Created)를 돌려주도록 한다.
+* 생성된 restaurant 정보는 Response Header에 담아서 보내주도록 하는데 Location에 /restaurants/1234 형태로 새로 만들어진 주소 정보를 저장한다.
+* 클라이언트에서 응답에 대한 Json 파서가 돌아가게 되므로 아무것도 전달하지 말고 Empty {}를 전달하도록 한다.
