@@ -6,42 +6,42 @@
 
 ## 1. Editor Basics
 
-> Actions
+### 1. Actions
 
 * ⌘ ⇧ A (find actions)
 
-> Select
+### 2. Select
 
 * ⌥ ⇧ ←/→ (select word)
 * ⌥ ↑/↓ (increasing, shrinks selction)
 * ⌘ A (whole file)
 
-> Comment Line
+### 3. Comment Line
 
 * ⌘ / (comment, uncomment)
 
-> Delete Line
+### 4. Delete Line
 
 * ⌘ ⌫ (delete current line)
 * ⌘ Z (restore)
 
-> Duplicate
+### 5. Duplicate
 
 * ⌘ D (duplicate any line)
 
-> Move
+### 6. Move
 
 * ⌥ ⇧ ↑/↓ (rearranging lines)
 * ⌘ ⇧ ↑/↓ (rearranging whole method)
 
-> Collapse
+### 7. Collapse
 
 * ⌘ - (collapse code region)
 * ⌘ + (expand code region)
 * ⌘ ⇧ - (collapse all regions in the file)
 * ⌘ ⇧ + (expand all regions in the file)
 
-> Multiple Selections
+### 8. Multiple Selections
 
 * ⌃ G (select symbol, again to select next occurrence)
 * ⌃ ⇧ G (deselect last occurrence)
