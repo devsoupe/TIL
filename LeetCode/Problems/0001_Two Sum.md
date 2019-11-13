@@ -8,11 +8,11 @@
 
 ## Description
 
-Given an array of integers, return <b>indices</b> of the two numbers such that they add up to a specific target.
+Given an array of integers, return **indices** of the two numbers such that they add up to a specific target.
 
-You may assume that each input would have <b>exactly</b> one solution, and you may not use the same element twice.
+You may assume that each input would have **exactly** one solution, and you may not use the same element twice.
 
-<b>Example:</b>
+**Example:**
 
 ```txt
 Given nums = [2, 7, 11, 15], target = 9,
@@ -24,9 +24,10 @@ return [0, 1].
 ## Solution
 
 ```java
-# Approach 1 - 시간복잡도 O(N²) / 공간복잡도 O(1)
+# Approach 1 - 시간복잡도 O(N²)
 
 class Solution {
+
     public int[] twoSum(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -41,9 +42,10 @@ class Solution {
 ```
 
 ```java
-# Approach 2 - 시간복잡도 O(N) / 공간복잡도 O(N)
+# Approach 2 - 시간복잡도 O(N)
 
 class Solution {
+    
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         
