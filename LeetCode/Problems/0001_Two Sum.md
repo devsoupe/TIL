@@ -60,3 +60,53 @@ class Solution {
     }
 }
 ```
+
+## TestCode
+
+**[_0001_Two_Sum.java](https://ide.goorm.io/shared_files/105973204462607290250_3v8ym_aea68b9b5246a6440b6bb6c2c7ec54c71574219290359)**
+
+```java
+import java.util.*;
+
+class _0001_Two_Sum {
+    
+    public static void main(String[] args) {
+        int[] nums = { 2, 7, 11, 15 };
+        
+        int target1 = 9;
+        int target2 = 18;
+        
+        int[] ret1 = twoSum_Approach1(nums, target1);
+        int[] ret2 = twoSum_Approach2(nums, target2);
+        
+        System.out.println("Ret1 : " + Arrays.toString(ret1));
+        System.out.println("Ret2 : " + Arrays.toString(ret2));
+    }
+    
+    private static int[] twoSum_Approach1(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return new int[] { i, j };
+                }
+            }
+        }
+
+        throw new IllegalArgumentException("No two sum solution");
+    }
+    
+    private static int[] twoSum_Approach2(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                return new int[] { map.get(target - nums[i]), i };
+            }
+            
+            map.put(nums[i], i);
+        } 
+        
+        throw new IllegalArgumentException("No two sum solution");
+    }
+}
+```
