@@ -47,20 +47,19 @@
 * [파이썬 웹 개발 올인원 패키지](Video/Fast%20Campus/파이썬%20웹%20개발%20올인원%20패키지/파이썬%20웹%20개발%20올인원%20패키지.md)
 * [컴퓨터 공학 올인원 패키지](Video/Fast%20Campus/컴퓨터%20공학%20올인원%20패키지/컴퓨터%20공학%20올인원%20패키지.md) -->
 
----
+<!-- --- -->
 
-## <b>Raywenderlich</b>
+<!-- ## <b>Raywenderlich</b>
 
-### `Article`
+### `Article` -->
 
 <!-- * [Android Custom View Tutorial](Raywenderlich/Article/Android%20Custom%20View%20Tutorial/Android%20Custom%20View%20Tutorial.md) -->
 
-
-* [안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)](Raywenderlich/Article/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin.md)
+<!-- * [안드로이드 머티리얼 디자인 소개 (Android - An Introduction to Material Design with Kotlin)](Raywenderlich/Article/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin/Android%20-%20An%20Introduction%20to%20Material%20Design%20with%20Kotlin.md)
 
 ### `Screencast`
 
-### `Video Course`
+### `Video Course` -->
 
 ---
 
